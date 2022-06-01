@@ -1,0 +1,39 @@
+#include<stdio.h>
+int main()
+{
+    int n,i,an=0,da=0;
+    char a[100000];
+
+    scanf("%d",&n);
+
+    for(i=0;i<=n;i++)
+    {
+        scanf("%c",&a[i]);
+    }
+
+    for(i=0;i<=n;i++)
+    {
+        if(a[i]=='A')
+        {
+            an++;
+        }
+        else if(a[i]=='D')
+        {
+            da++;
+        }
+    }
+    if(an>da)
+    {
+        printf("Anton");
+    }
+    else if(an<da)
+    {
+        printf("Danik");
+    }
+    else
+    {
+        printf("Friendship");
+    }
+
+    return 0;
+}

@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char a[100],i=0,capi=0,smal=0;
+
+    gets(a);
+
+    while(a[i]!='\0')
+    {
+        if(a[i]>=65 && a[i]<=90)
+        {
+            capi++;
+        }
+        else if(a[i]>=97 && a[i]<=122)
+        {
+            smal++;
+        }
+        i++;
+    }
+
+    if(capi>smal)
+    {
+        strupr(a);
+    }
+    else if(smal>capi)
+    {
+        strlwr(a);
+    }
+    else if(capi==smal)
+    {
+        strlwr(a);
+    }
+
+    puts(a);
+
+    return 0;
+}
+

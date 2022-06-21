@@ -1,0 +1,23 @@
+ #include<stdio.h>
+int main()
+{
+    int cost,dollar,banana,i,x=0,total_cost=0;
+
+    scanf("%d %d %d",&cost,&dollar,&banana);
+
+    for(i=1;i<=banana;i++)
+    {
+       x=cost*i;
+       total_cost+=x;
+    }
+    if(dollar<total_cost)
+    {
+        printf("%d\n",total_cost-dollar);
+    }
+    else
+    {
+        printf("0");
+    }
+
+    return 0;
+}

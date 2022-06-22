@@ -1,0 +1,33 @@
+#include<stdio.h>
+int main()
+{
+    int n,a[100],i,j,count=0;
+
+    scanf("%d",&n);
+
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+
+    for(j=0;j<n;j++)
+    {
+        if(a[j]==1)
+        {
+            count++;
+            break;
+        }
+
+    }
+    if(count==0)
+    {
+        printf("EASY\n");
+    }
+    else
+    {
+        printf("HARD\n");
+    }
+
+
+    return 0;
+}

@@ -1,0 +1,32 @@
+#include<stdio.h>
+int main()
+{
+    long long n;
+    int count=0,rem;
+
+    scanf("%lld",&n);
+
+
+    while(n>0)
+    {
+        rem=n%10;
+
+        if(rem==7 || rem==4)
+        {
+            count++;//1234567
+        }
+        n=n/10;
+    }
+   
+    if(count==4 || count==7)
+    {
+        printf("YES\n");
+    }
+    else
+    {
+        printf("NO\n");
+    }
+
+    return 0;
+}
+

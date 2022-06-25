@@ -1,0 +1,26 @@
+#include<stdio.h>
+int main()
+{
+    int n,h,i,sum=0;
+    int a[1000];
+    scanf("%d%d",&n,&h);
+
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for(i=0;i<n;i++)
+    {
+        if(a[i]<=h)
+        {
+            sum=sum+1;
+        }
+        else
+        {
+            sum=sum+2;
+        }
+    }
+    printf("%d\n",sum);
+
+    return 0;
+}

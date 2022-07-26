@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+//#define max 10000;
+int main()
+{
+   int t;
+   cin >> t;
+   int x,y,i;
+   for(i=0;i<t;i++)
+   {
+       cin >> x >> y;
+       if(x%y==0)
+       {
+           cout << "0" <<endl;
+       }
+       else
+       {
+           int t=x%y;
+           t=y-t;
+           cout << t << endl;
+       }
+   }
+    return 0;
+}
+

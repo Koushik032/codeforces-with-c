@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+//#define max 10000;
+int main()
+{
+    int t;
+    cin >> t;
+
+    char a[1000];
+    while(t!=0)
+    {
+        cin >> a;
+        if((a[0]=='Y' || a[0]=='y') && (a[1]=='e' || a[1]=='E') && (a[2]=='S' || a[2]=='s'))
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+           cout << "NO" << endl;
+        }
+        t--;
+    }
+    return 0;
+}
+

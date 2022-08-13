@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin >> t;
+int di=0,se=0,f1=1;
+    vector<int> v(t);
+
+    for(int i=0;i<t;i++){
+        cin >> v[i];
+    }
+
+    while(!v.empty()){
+        if(f1==1){
+        if(v[0]>v.back()){
+            se+=v[0];
+            v.erase(v.begin());
+        }
+        else
+        {
+            se+=v.back();
+            v.pop_back();
+        }
+        f1=2;
+        }
+        else{
+            if(v[0]>v.back()){
+            di+=v[0];
+            v.erase(v.begin());
+        }
+        else
+        {
+            di+=v.back();
+            v.pop_back();
+        }
+        f1=1;
+        }
+    }
+    cout << se << " " << di << endl;
+    return 0;
+
+}

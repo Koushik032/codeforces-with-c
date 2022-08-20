@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define optimize() ios_base::sync_with_base(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+#define ll long long
+int main()
+{
+    int t;
+    cin >> t;
+
+    while(t--)
+    {
+        ll a,b;
+        cin >> a >> b;
+
+        ll c=a+b;
+
+        if(c>=4)
+        {
+            ll r=c/4;
+            if(r<=a && r<=b)
+            {
+                cout << r << endl;
+            }
+            else if(r<=a && r>=b)
+            {
+                    cout << b <<endl;
+            }
+            else{
+                cout << a << endl;
+            }
+        }
+        else{
+            cout << "0" << endl;
+        }
+    }
+
+    return 0;
+}

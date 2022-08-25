@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define Royscode() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+
+int main()
+
+{
+    Royscode();
+
+    int a,b;
+
+    cin >> a >> b;
+
+    int min,max;
+
+    if(a>b)
+    {
+        min=b;
+        max=a;
+    }
+    else{
+        min=a;
+        max=b;
+    }
+
+    int sum=abs(max-min)/2;
+
+    
+    cout << min << " ";
+    cout << sum << endl;
+
+
+
+
+    
+    return 0;
+}

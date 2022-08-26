@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define Royscode() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+#define max 10000
+int main()
+{
+    Royscode();
+    int arr[max];
+    int t;
+    cin >> t;
+    while(t--){
+    int n;
+    cin >> n;
+
+    for(int i=0;i<n;i++)
+    {
+        cin >> arr[i];
+    }
+int flag_odd=0;
+int flag_even=0;
+   
+    for(int i=0;i<n;i++)
+    {
+        if(i%2 != arr[i]%2)
+        {
+            if(arr[i]%2!=0)
+            {
+                flag_odd++;
+            }
+            else{
+                flag_even++;
+            }
+
+        }
+    }
+        if(flag_odd!=flag_even)
+        {
+            cout << "-1" << endl;
+        }
+        else
+        {
+            cout << flag_even << endl;
+        }
+    }
+    
+
+    return 0;
+}

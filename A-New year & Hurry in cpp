@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define Royscode() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+#define max1 10000
+int main()
+{
+    Royscode();
+int n,k;
+
+cin >> n >> k;
+
+int x=240-k;
+int y=0,a=1,flag=0;
+while(x>=y)
+{   
+    
+    int z=a*5;
+    y=y+z;
+    flag++;
+    a++;
+    if(flag==n+1)
+    {
+        break;
+    }
+    
+}
+cout << flag-1 << endl;
+    return 0;
+}

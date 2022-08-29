@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define optimize() ios_base::sync_with_base(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+#define ll long long
+#define max1 100000
+int main()
+{
+    string str;
+    cin >> str;
+
+    int cnt=0;
+
+    for(int i=1;i<str.size();i++)
+    {
+        if(str[i]>='A' && str[i]<='Z')
+        {
+            cnt++;
+        }
+            //cnt++;
+    }
+
+    if((str[0]>='A' && str[0]<='Z')&& (cnt==str.size()-1))
+        {
+            for(int i=0;i<str.size();i++)
+            {
+                cout << (char)tolower(str[i]);
+            }
+        }
+        else if(cnt==str.size()-1)
+        {
+            for(int i=0;i<str.size();i++)
+            {
+                    if(i==0)
+                    {
+                        cout << (char)toupper(str[i]);
+                    }
+                    else{
+                        cout << (char)tolower(str[i]);
+                    }
+            }
+        }
+        else{
+            cout << str << endl;
+        }
+    return 0;
+}

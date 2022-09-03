@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define Royscode() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+#define max 10000
+#define ll long long
+
+int main() {
+    Royscode();
+   int n,m;
+   cin >> n >>m;
+    map<string,string>ipname;
+   for(int i=0;i<n;i++)
+   {
+    string name,ip;
+
+    cin >> name >> ip;
+
+    ipname[ip]=name;
+   }
+
+   while(m--)
+   {
+    string s1,ip;
+    cin >> s1 >> ip;
+
+    ip.pop_back();
+
+    cout << s1 << " " << ip << "; #" <<ipname[ip] << endl;
+   }
+
+
+	// your code goes here
+	return 0;
+}

@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define Royscode() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+#define max 10000
+#define ll long long
+int main()
+{
+    ll t,n;
+    cin >> t;
+    while(t--)
+    {
+        cin >> n;
+
+        ll k=n+1;
+
+        ll c2=k/3;
+        ll c1=abs(n-(2*c2));
+
+        cout << c1 << " " << c2 << endl;
+
+        
+    }
+
+
+}

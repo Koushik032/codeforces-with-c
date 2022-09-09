@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define Royscode() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+#define max1 10000
+#define ll long long
+int main()
+{
+    Royscode();
+    int n;
+    cin >> n;
+    int a[max1],b[max1];
+    for(int i=0;i<n;i++)
+    {
+        cin >> a[i] >> b[i];
+    }
+    int mis=0,chr=0;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]>b[i])
+        {
+            mis++;
+        }
+        else if(a[i]<b[i])
+        {
+            chr++;
+        }
+
+    }
+
+    if(mis>chr)
+    {
+        cout << "Mishka" << endl;
+    }
+    else if(mis<chr)
+    {
+        cout << "Chris" << endl;
+    }
+    else{
+        cout << "Friendship is magic!^^" << endl;
+    }
+    return 0;
+    }

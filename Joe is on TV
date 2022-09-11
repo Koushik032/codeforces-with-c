@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define Royscode() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+#define max1 10000
+#define ll long long
+int main()
+{
+    Royscode();
+    int n;
+    cin >> n;
+
+    double x=0.0;
+
+    for(int i=1;i<=n;i++)
+    {
+        x+=(1.0/i);
+    }
+
+    cout << fixed << setprecision(12) << x << endl;
+    
+    return 0;
+}

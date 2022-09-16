@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define Royscode() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+#define max1 10000
+#define ll long long
+int main()
+{
+    //Royscode();
+    ll t;
+    cin >> t;
+    while(t--)
+    {
+      vector<int>v,s;
+       ll n;
+       cin >> n;
+        for(ll i=0;i<n;i++)
+        {
+            ll x;
+            cin >> x;
+            if(x%2==0) v.push_back(x);
+            else s.push_back(x);
+        }
+        if(s.size()==n)
+        {
+              if(n%2==0)
+              {
+               cout << "NO" << endl;
+              }                     
+              else{
+               cout << "YES" << endl;
+              }                                                                                                                                                                                                                                                                     
+        }
+        else if(v.size()==n)
+        {
+         cout << "NO" << endl;
+        }
+        else{
+         cout << "YES" << endl;
+        }
+    }
+    return 0;
+    }

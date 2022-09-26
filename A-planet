@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define Royscode() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define endl '\n';
+#define max 10000
+#define ll long long
+#define vpb v.push_back
+#define f() int t;cin >> t;while(t--)
+int main()
+{
+    Royscode();
+    f()
+    {
+        int n,c;
+        cin >> n >> c;
+        vector<int>v;
+        for(int i=0;i<n;i++)
+        {
+            int a;
+            cin >> a;
+            vpb(a);
+        }
+        int sum=0,sum1=0;
+        map<int,int>cnt;
+        for(auto u:v) cnt[u]++;
+        for(auto u:cnt)
+        {
+            if(u.second>c)
+            {
+                sum+=c;
+            }
+            else{
+                sum+=u.second;
+            }
+        } 
+        cout << sum << endl;
+    }
+    return 0;
+}

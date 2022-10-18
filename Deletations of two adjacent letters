@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main(){
+    ll t;
+    cin >>t;
+    while(t--){
+        string s;
+        cin>>s;
+        char ch;
+        cin>>ch;
+        ll flag=0,cnt=0,pos=0;
+        vector<ll>v;
+
+        for(ll i=0;i<s.size();i++)
+        {
+            if(s[i]==ch)
+            {
+                flag++;
+                pos=i+1;
+                v.push_back(pos);
+            }
+        }
+        // cout<<flag<<" "<< cnt<<" "<<pos<<endl;
+        // for(auto u:v)cout<<u<<""<<endl;
+        if(flag==0)
+        {
+            cout<<"NO"<<endl;
+        }
+        else{
+                for(ll i=0;i<v.size();i++)
+                {
+                    if(v[i]%2!=0)
+                    {
+                        cnt++;
+                    }
+            }
+               if(cnt!=0)
+               {
+                cout<<"YES"<<endl;
+               } 
+               else{
+                cout<<"NO"<<endl;
+               } 
+        }
+    }
+    return 0;
+}

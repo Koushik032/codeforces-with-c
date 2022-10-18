@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main(){
+    ll a,b;
+    cin>>a>>b;
+    ll y,g,bl;
+    cin>>y>>g>>bl;
+
+    ll flag=(2*y)+g;
+    ll flag1=g+(3*bl);
+    ll flag2=flag-a;
+    ll flag3=flag1-b;
+
+    if(flag2<0)
+    {
+        flag2=0;
+    }
+    if(flag3<0)
+    {
+        flag3=0;
+    }
+
+    cout<<flag2+flag3<<endl;
+    return 0;
+}

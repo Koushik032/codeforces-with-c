@@ -1,0 +1,20 @@
+#include <iostream>
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+int main() {
+        ll x,y;
+        cin>>x>>y;
+
+        ll flag=min(x,y);
+
+        if(flag%2==0)
+        {
+            cout<<"Malvika"<<endl;
+        }
+        else{
+            cout<<"Akshat"<<endl;
+        }
+    // your code goes here
+    return 0;
+}

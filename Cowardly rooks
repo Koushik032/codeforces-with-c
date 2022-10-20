@@ -1,0 +1,28 @@
+#include <iostream>
+#include<bits/stdc++.h>
+#define ll long long
+#define max1 10000
+using namespace std;
+int main() {
+        ll t;
+        cin>>t;
+        while(t--)
+        {
+            ll n,m,sum=0;
+            cin>>n>>m;
+            ll a[max1],b[max1];
+            for(ll i=0;i<m;i++)
+            {
+                cin>>a[i]>>b[i];
+            }
+            
+            if(n>m)
+            {
+                cout<<"YES"<<endl;
+            }
+            else{
+                cout<<"NO"<<endl;
+            }
+        }
+    return 0;
+}

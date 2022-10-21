@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+int main(){
+   ll t;
+   cin>>t;
+   while(t--)
+   {
+    ll n,cnt=0;
+    cin>>n;
+
+    for(ll i=1;i<=n;i++)
+    {
+        if(i%10==3 || i%3==0)
+        {
+            n++;
+            continue;
+        }
+        else{
+        if(i==n)cout<<i<<endl;
+        else{
+            continue;
+        }
+    }
+    }
+    
+   }
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+int main()
+{
+    ll n;
+    cin>>n;
+    string s;
+    cin>>s;
+    //vector<char>v;
+    set<char>s1;
+    for(ll i=0;i<s.size();i++)
+    {
+        s1.insert(toupper(s[i]));
+    }
+    if(s1.size()==26)
+    {
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
+    return 0;
+}

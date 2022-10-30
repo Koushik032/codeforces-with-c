@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+int main()
+{
+    ll t,flag=0;
+    cin>>t;
+    while(t--)
+    {
+        ll a,b;
+        cin>>a>>b;
+
+         ll sum=abs(a-b);
+         double x=(sum%10);
+        //cout<<ceil(sum/10)<<endl;
+         if(x==0){
+        cout<<sum/10<<endl;
+    }
+    else{
+        cout<<(sum/10)+1<<endl;
+        sum=0;
+    }
+    }
+    return 0;
+}

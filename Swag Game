@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+int main()
+{
+  ll t;
+  cin>>t;
+  while(t--)
+  {
+    ll n,sum=INT_MAX;
+    cin>>n;
+    vector<ll>v;
+    for(ll i=0;i<n;i++)
+    {
+        ll a;
+        cin>>a;
+        v.pb(a);
+    }
+    for(ll i=1;i<n;i++)
+    {
+        sum=min(v[i],sum);
+    }
+    //cout<<sum<<endl;
+    if(v[0]>sum)
+    {
+        cout<<"Alice"<<endl;
+    }
+    else{
+        cout<<"Bob"<<endl;
+    }
+  }
+    return 0;
+}

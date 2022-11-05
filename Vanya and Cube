@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+int main()
+{
+  ll n,cnt=0,sum=0,x=0,i=1;
+  cin>>n;
+  while(1)
+  {
+    sum+=i;
+    i++;
+    //cout<<sum<<endl;
+    x+=sum;
+    //y+=x;
+    //cout<<x<<endl;
+    //cout<<y<<endl;
+    if(x<=n)
+    {
+        cnt++;
+    }
+    else{
+        break;
+    }
+  }
+  cout<<cnt<<endl;
+    return 0;
+}

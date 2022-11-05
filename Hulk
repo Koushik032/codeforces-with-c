@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+int main()
+{
+  ll n;
+  cin>>n;
+  vector<string>v;
+
+  for(ll i=1;i<=n;i++)
+  {
+    if(i%2!=0 && i==n)
+    {
+        v.pb("I hate it ");
+    }
+    else if(i%2!=0 && i!=n)
+    {
+        v.pb("I hate that ");
+    }
+    else if(i%2==0 && i==n)
+    {
+        v.pb("I love it ");
+    }
+    else if(i%2==0)
+    {
+        v.pb("I love that ");
+    }
+  }
+  for(auto u:v)cout<<u;
+    return 0;
+}

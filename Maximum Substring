@@ -1,0 +1,59 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define vst() sort(v1.begin(),v1.end())
+int main()
+{
+  ll t;
+  cin>>t;
+  while(t--)
+  {
+    ll n,x1=0,y0=0,xmax=0,ymax=0,xcnt=0,ycnt=0;
+    cin>>n;
+    
+    string s;
+    cin>>s;
+
+
+    //cout<<s;
+
+    for(ll i=0;i<n;i++)
+    {
+        if(s[i]=='1')
+        {
+            x1++;
+            y0=0;
+            xcnt++;
+            xmax=max(xmax,x1);
+        }
+        else{
+            y0++;
+            x1=0;
+            ycnt++;
+            ymax=max(ymax,y0);
+        }
+    }
+    //cout<<xmax<<" "<<ymax<<endl;
+    //cout<<xcnt<<" "<<ycnt;
+    ll z=max(xmax,ymax);
+    ll c=z*z;
+    //cout<<c<<endl;
+    ll b=xcnt*ycnt;
+    //cout<<b<<endl;
+
+    if(c>b)
+    {
+        cout<<c<<endl;
+    }
+    else{
+        cout<<b<<endl;
+    }
+
+  }
+    return 0;
+}

@@ -1,0 +1,47 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define koushik() ios_base::sync_with_stdio(0);
+#define vst() sort(v1.begin(),v1.end())
+int main()
+{
+  koushik();
+  ll n,x,cnt=0,b;
+  cin>>n>>x;
+  vector<pair<char,ll>>v;
+    for(ll i=0;i<n;i++)
+  {
+    char c;
+    ll a;
+    cin>>c>>a;
+    v.pb({c,a});
+}
+//for(auto u:v)cout<<u.fi<<" "<<u.se<<endl;
+
+for(auto u:v)
+{
+    if(u.fi=='+')
+    {
+        x+=u.se;
+    }
+    else{
+        b=x;
+        x-=u.se;
+        if(x<0)
+        {
+            cnt++;
+            x=b;
+        }
+    }
+}
+
+cout<<x<<" "<<cnt<<endl;
+    return 0;
+}
+
+

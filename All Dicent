@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main()
+{
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+
+        vector<ll>v;
+
+        for(ll i=0;i<n;i++)
+        {
+            ll a;
+            cin>>a;
+            v.push_back(a);
+        }
+        sort(v.begin(),v.end());
+        ll sz=unique(v.begin(),v.end())-v.begin();
+        ll x=n-sz;
+        if(x%2==0)cout<<sz<<endl;
+        else cout<<sz-1<<endl;
+        v.clear();
+    }
+    return 0;
+}

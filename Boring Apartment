@@ -1,0 +1,31 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define vst() sort(v.begin(),v.end())
+
+int main()
+{
+	ll t;
+	cin>>t;
+
+	while(t--){
+		string s;
+		cin>>s;
+
+		ll sz=s.size();
+
+		ll x=stoi(s);
+
+		ll y=x%10;
+
+		ll ans=(10*(y-1)+(sz*(sz+1)/2));
+
+		cout<<ans<<endl;
+	}
+	return 0;
+}

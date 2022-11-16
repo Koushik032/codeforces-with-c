@@ -1,0 +1,46 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define vst() sort(s4.begin(),s4.end())
+#define v1st() sort(s2.begin(),s2.end())
+const ll N=10e6+5;
+
+
+int main()
+{
+    string s,s1,s2;
+    cin>>s>>s1>>s2;
+    ll flag=0;
+    string s4=s+s1;
+    //cout<<s4<<endl;
+    //cout<<s<<s1<<s2;
+    //ll x=s.size()+s1.size();
+
+    // }
+    vst();
+    v1st();
+    if(s4.size()==s2.size()){
+    for(ll i=0;i<s4.size();i++){
+        if(s4[i]!=s2[i]){
+            flag=0;
+            break;
+        }
+        else{
+            flag++;
+        }
+    }
+}
+
+    if(flag==0){
+        cout<<"NO"<<endl;
+    }
+    else{
+        cout<<"YES"<<endl;
+    }
+    return 0;
+}

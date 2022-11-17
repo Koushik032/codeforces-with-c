@@ -1,1 +1,46 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define vst() sort(v.begin(),v.end())
+int main()
+{
+    ll n,m,a,b;
+    cin>>n>>m>>a>>b;
 
+    ll nor_cost=n*a;
+    //cout<<nor_cost<<endl;
+    ll spe_ride=n/m;
+    //cout<<spe_ride<<endl;
+    ll spe_cost=spe_ride*b;
+    //cout<<spe_cost<<endl;
+    ll spe_rid=spe_ride*m;
+    //cout<<spe_rid<<endl;
+
+    if(spe_rid!=n){
+        ll nor_ride=(n-spe_rid);
+        //cout<<nor_ride<<endl;
+        ll nor_cos=nor_ride*a;
+        //cout<<nor_cos<<endl;
+        if(nor_cos<=b){
+        spe_cost=spe_cost+nor_cos;
+        //cout<<spe_cost<<endl;
+    }
+    else{
+        spe_cost=spe_cost+b;
+        //cout<<spe_cost<<endl;
+    }
+    }
+
+    if(spe_cost<nor_cost){
+        cout<<spe_cost<<endl;
+    }
+    else{
+        cout<<nor_cost<<endl;
+    }
+    return 0;
+}

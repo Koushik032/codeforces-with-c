@@ -1,0 +1,33 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define vst() sort(v.begin(),v.end())
+#define vec() vector<ll>v
+const ll N=10e6+5;
+
+
+int main()
+{
+
+   ll n,sum=0,flag=0;
+   cin>>n;
+
+   for(ll i=0;i<n;i++){
+    ll a;
+    cin>>a;
+    sum+=a;
+   }
+   for(ll i=1;i<=5;i++){
+    if(sum%(n+1)!=0){
+        flag++;
+    }
+    sum++;
+   }
+   cout<<flag<<endl;
+    return 0;
+}

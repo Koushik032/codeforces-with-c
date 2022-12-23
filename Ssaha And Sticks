@@ -1,0 +1,22 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define vst() sort(v.begin(),v.end())
+#define vec() vector<ll>v
+int main(){
+	ll a,b;
+	cin>>a>>b;
+
+	ll sas;
+
+	sas=a/b;
+
+	if(sas%2!=0)cout<<"YES"<<endl;
+	else cout<<"NO"<<endl;
+	return 0;
+}

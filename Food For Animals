@@ -1,0 +1,55 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define vst() sort(v.begin(),v.end())
+#define vec() vector<ll>v
+int main(){
+	ll t;
+	cin>>t;
+	while(t--){
+	ll a,b,c,x,y;
+	cin>>a>>b>>c>>x>>y;
+	bool flag=false,flag1=false;
+
+	if(x<=a && y<=b){
+		flag=true;
+		flag1=true;
+	}
+	else{
+		if(x>a){
+			x=x-a;
+			if(x<=c){
+				c=c-x;
+				flag=true;
+			}
+			else{
+				flag=false;
+			}
+		}
+		else{
+			flag=true;
+		}
+		if(y>b){
+			y=y-b;
+			if(y<=c){
+				c=c-y;
+				flag1=true;
+			}
+			else{
+				flag1=false;
+			}
+		}
+		else{
+			flag1=true;
+		}
+	}
+	if(flag && flag1)cout<<"YES"<<endl;
+	else cout<<"NO"<<endl;
+	}
+	return 0;
+}

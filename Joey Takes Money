@@ -1,0 +1,30 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define vst() sort(v.begin(),v.end())
+#define vec() vector<ll>v
+int main(){
+   ll t;
+   cin>>t;
+   while(t--){
+   ll n;
+   cin>>n;
+
+   ll sum=1;
+   for(ll i=0;i<n;i++){
+      ll a;
+      cin>>a;
+      sum*=a;
+   }
+   //cout<<sum<<endl;
+   ll ans=sum+(n-1);
+   //cout<<ans<<endl;
+    cout<<(2022*ans)<<endl;
+}
+    return 0;
+}

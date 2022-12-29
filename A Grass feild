@@ -1,0 +1,29 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define vst() sort(v.begin(),v.end())
+#define vec() vector<ll>v
+int main(){
+   ll t;
+   cin>>t;
+   while(t--){
+      ll a,b;
+      cin>>a>>b;
+      ll x,y;
+      cin>>x>>y;
+
+      ll sum=a+b+x+y;
+
+      if(sum==4)cout<<2<<endl;
+      else if(sum==0)cout<<0<<endl;
+      else cout<<1<<endl;
+
+
+   }
+    return 0;
+}

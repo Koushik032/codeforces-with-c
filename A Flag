@@ -1,0 +1,70 @@
+///Joy Sri-Krisno///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define max1 10000
+#define pb push_back
+#define fi first
+#define se second
+#define vst() sort(v.begin(),v.end())
+const ll N=10e6+5;
+int main()
+{
+    ll n,m,flag=0;
+    cin>>n>>m;
+    getchar();
+
+    char a[n][m];
+
+    for(ll i=0; i<n; i++) {
+        for(ll j=0; j<m; j++) {
+            cin>>a[i][j];
+        }
+    }
+    // for(ll i=0; i<n; i++) {
+    //     for(ll j=0; j<m; j++) {
+    //         cout<<a[i][j];
+    //     }
+    //     cout<<endl;
+    //}
+    if(m!=1){
+    for(ll i=0; i<n; i++) {
+        for(ll j=0; j<m-1; j++) {
+            if(a[i][j]==a[i][j+1]){
+                flag++;
+             }
+            else{
+                flag=0;
+                break;
+            }
+        }
+        //cout<<flag<<endl;
+        if(flag==0)break;
+    }
+ }
+
+    //cout<<flag<<endl;
+     if(flag!=0 || (m==1 && n!=1)){
+     // cout<<flag<<endl;
+    for(ll i=0; i<n-1; i++) {
+        for(ll j=0; j<m; j++) {
+            if(a[j][0]!=a[j+1][0]){
+                flag++;
+                //cout<<flag<<endl;
+             }
+            else{
+                flag=0;
+                break;
+            }
+        }
+        if(flag==0)break;
+    }
+}
+else if(n==1 && m==1)flag=1;
+//cout<<flag<<endl;
+    if(flag==0)cout<<"NO"<<endl;
+    else{
+        cout<<"YES"<<endl;
+   }
+    return 0;
+}

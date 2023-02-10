@@ -1,0 +1,58 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(v) (v).begin(),(v).end()
+#define rall(v) (v).rbegin(),(v).rend()
+#define MOD 1000000007
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+//const int mx = 2e5+123;
+//int a[mx];
+
+int main()
+{
+    optimize();
+         
+         string s,s1;
+         cin >> s >> s1;
+
+         int bulls=0,cow=0;
+
+         for ( int i = 0; i < s.size() ; i++ )
+         {
+            if ( s[i] == s1[i] )
+            {
+              bulls++;
+            }
+         }
+         for ( int i = 0; i < s.size() ; i++ )
+         {
+            for ( int j = 0; j < s1.size(); j++ )
+            {
+               if( s[i] == s1[j] && i != j)
+               {
+                  cow++;
+               }
+            }
+         }
+
+         cout << bulls << " " << cow << endl;
+
+       return 0;
+}

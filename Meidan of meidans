@@ -1,0 +1,64 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(v) (v).begin(),(v).end()
+#define rall(v) (v).rbegin(),(v).rend()
+#define MOD 1000000007
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+//const int mx = 2e5+123;
+//int a[mx];
+
+int main()
+{
+    optimize();
+         
+         vl v, v1, v2, v3;
+
+         for( int i = 0; i < 3; i++ )
+         {
+            ll a;
+            cin >>a;
+            v.PB( a );
+         }
+         sort( all (v));
+         for( int i = 0; i < 3; i++ )
+         {
+            ll a;
+            cin >>a;
+            v1.PB( a );
+         }
+         sort( all (v1));
+         for( int i = 0; i < 3; i++ )
+         {
+            ll a;
+            cin >>a;
+            v2.PB( a );
+         }
+         sort( all (v2));
+
+         v3.PB(v[1]);
+         v3.PB(v1[1]);
+         v3.PB(v2[1]);
+
+         sort(all(v3));
+
+         cout << v3[1] << endl;
+       return 0;
+}

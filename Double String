@@ -1,0 +1,73 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(v) (v).begin(),(v).end()
+#define rall(v) (v).rbegin(),(v).rend()
+#define sz(x) (int)x.size()
+#define MOD 1000000007
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+//const int mx = 123;
+//int a[mx];
+
+int main()
+{
+    optimize();
+    ll t;
+    cin >> t;
+
+   		while ( t-- )
+   		{
+   			int n;
+   			cin >> n;
+
+   			vector<string>vs;
+   			map< string, ll > cnt;
+
+   			for ( int i = 0; i < n; i++ )
+   			{
+   				string s;
+   				cin >> s;
+
+   				vs.PB(s);
+   				cnt[s] = 1;
+   			}	
+   			int val = 0;
+   			for ( int i = 0; i < n; i++ )
+   			{
+   				for ( int j = 1; j < vs[i].size(); j++ )
+   				{
+   					string s1 = vs[i].substr( 0, j );
+   					//cout << s1 << endl;
+   					string s2 = vs[i].substr( j, vs[i].size()-1);
+   					//cout << s2 << endl;
+
+   					if ( cnt[s1] == 1 && cnt[s2] == 1 )
+   					{
+   						val = 1;
+   					}
+   				}
+   				cout << val;
+   				val = 0;
+   			}
+   			cout << endl;
+   		}
+       return 0;
+}

@@ -1,0 +1,67 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(v) (v).begin(),(v).end()
+#define rall(v) (v).rbegin(),(v).rend()
+#define sz(x) (int)x.size()
+#define MOD 1000000007
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+const int mx = 1e5+123;
+int sum[mx];
+
+int main()
+{
+    optimize();
+    int n;
+    cin >> n;
+
+    vl v;
+
+    for ( int i = 0; i < n; i++ )
+    {
+    	ll a;
+    	cin >> a;
+
+    	v.PB(a);
+    	sum[i+1] = sum[i] + a;
+    }
+
+    // for ( int i = 0; i <= n; i++ )
+    // {
+    // 	cout << sum[i] << endl;
+    // }
+
+    int q;
+    cin >> q;
+
+    while( q-- )
+    {
+    	int l, r;
+    	cin >> l >> r;
+
+    	int result = (sum[r] - sum[l-1]) / 10;
+
+    	cout << result << endl;
+    }
+
+       return 0;
+    
+}

@@ -1,0 +1,87 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(v) (v).begin(),(v).end()
+#define rall(v) (v).rbegin(),(v).rend()
+#define sz(x) (int)x.size()
+#define MOD 1000000007
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+const int mx = 1e5+123;
+int sum[mx];
+
+int main()
+{
+    optimize();
+    int t;
+    cin >> t;
+
+    while ( t-- )
+    {
+    	int n;
+    	cin >> n;
+
+    	vi a;
+
+    	for ( int i = 0; i < n; i++ )
+    	{
+    		ll b;
+    		cin >> b;
+    		a.PB(b);
+    	}
+
+    	int l = 0, mn = 1;
+    	int r = n - 1, mx = n;
+    	
+    	while ( l <= r )
+    	{
+    		if ( a[l] == mx )
+    		{
+    			l++;
+    			mx--;
+    		}
+    		else if( a[l] == mn )
+    		{
+    			l++;
+    			mn++;
+    		}
+    		else if( a[r] == mn )
+    		{
+    			r--;
+    			mn++;
+    		}
+    		else if( a[r] == mx )
+    		{
+    			r--;
+    			mx--;
+    		}
+    		else
+    		{
+    			break;
+    		}
+    	}
+
+    	if ( l <= r )cout << l+1 << " " << r+1 << endl;
+    	else{
+    		cout << -1 << endl;
+    	}
+    }
+       return 0;
+}

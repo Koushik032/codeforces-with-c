@@ -1,0 +1,68 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(v) (v).begin(),(v).end()
+#define rall(v) (v).rbegin(),(v).rend()
+#define sz(x) (int)x.size()
+#define MOD 1000000007
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+const int mx = 2e5+123;
+int sum1[mx],a[mx];
+
+int main()
+{
+    optimize();
+        
+         int n, cnt = 0;
+         cin >> n;
+
+         vi v;
+
+         for ( int i = 2; i < n; i++ )
+         {
+            if ( n % i == 0 ){
+               cnt++;
+               break;
+            }
+         }
+            if ( n % 2 == 0 )
+            {
+               while( n != 0 )
+               {
+                  n -= 2;
+                  v.PB(2);
+               }
+            }
+            else
+            {
+               v.PB(3);
+               n -= 3;
+               while( n != 0 )
+               {
+                  n -= 2;
+                  v.PB(2);
+               }
+            }
+
+            cout << v.size() << endl;
+            for ( auto u: v )cout << u << " ";
+       return 0;    
+}

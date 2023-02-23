@@ -1,0 +1,83 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(v) (v).begin(),(v).end()
+#define rall(v) (v).rbegin(),(v).rend()
+#define sz(x) (int)x.size()
+#define MOD 1000000007
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+//const int mx = 2e5+123;
+//int sum1[mx],a[mx];
+
+
+struct music{
+      int time;
+      int posi;
+};
+
+bool comp( music a , music b )
+{
+   if ( a.time < b.time ) return true;
+   else return false;
+}
+int main()
+{
+    optimize();
+        
+      vector < music > v;
+      vi v1;
+      int n, k;
+      cin >> n >> k;
+
+
+      for ( int i = 0; i < n; i++ )
+      {
+         int a;
+         cin >> a;
+         
+         music x;
+         x.time = a;
+         x.posi = i+1;
+
+         v.PB(x);
+
+      }
+
+      //for ( auto u: v )cout << u.time <<" "<< u.posi << endl;
+      int sum = 0;
+      sort(all(v) , comp );
+
+      for ( auto u: v )
+      {
+            if ( u.time <= k )
+            {
+               v1.PB( u.posi );
+               k -= u.time;
+            }
+      }
+
+      //cout << sum << endl;
+
+      cout << v1.size() << endl;
+      for ( auto u : v1 )cout << u <<" ";
+      //break;
+       return 0;    
+}

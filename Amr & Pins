@@ -1,0 +1,43 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(v) (v).begin(),(v).end()
+#define rall(v) (v).rbegin(),(v).rend()
+#define sz(x) (int)x.size()
+#define MOD 1000000007
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+//const int mx = 2e5+123;
+//int sum1[mx],a[mx];
+
+int main()
+{
+    optimize();
+
+         double r, x, y, x1, y1;
+         cin >> r >> x >> y >> x1 >> y1;
+
+         double a = sqrt( pow((x1 - x ),2) + pow(( y1 - y ),2) );
+
+
+         cout <<  ceil(a/(2*r)) << endl;
+
+       return 0;    
+}

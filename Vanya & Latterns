@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main()
+{
+
+        ll n, l;
+        ll ans =0;
+        cin >> n >> l;
+
+        ll a[n+5];
+
+        for ( ll i = 0; i < n; i++ )
+        {
+            cin >> a[i];
+        }
+
+        sort ( a, a+n );
+
+        for ( ll i =0; i < n - 1; i++ )
+        {
+            ll sum = a[i+1] - a[i];
+            if ( sum > ans )ans = sum;
+        }
+        //cout << ans << endl;
+        double x = (double)ans/2;
+        double y = a[0] - 0;
+        double z = l - a[n-1];
+        cout << fixed << setprecision(10 )<< max( x,max(y,z)) << endl;
+    return 0;
+}
+

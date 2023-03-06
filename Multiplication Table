@@ -1,0 +1,35 @@
+
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+ 
+int main()
+{
+
+    ll n;
+    cin >> n;
+
+    ll a[n+1][n+1];
+
+    for ( ll i = 0; i < n; i++ )
+    {
+        for ( ll j = 0; j < n; j++ )
+        {
+            cin >> a[i][j];
+        }
+    }
+
+    ll k = sqrt((( a[0][n-1] * a[1][0]) / (a[1][n-1])));
+
+    cout << k ;
+
+
+        for ( ll j = 1; j < n; j++ )
+        {
+            cout << " " <<(a[0][j] / k);
+        }
+
+    cout << endl;
+    return 0;
+}

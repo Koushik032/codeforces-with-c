@@ -1,0 +1,80 @@
+
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+ 
+int main()
+{
+    optimize();
+
+       int n;
+       cin >> n;
+
+       vector < pair < int, int >> pa;
+
+       for ( int i = 0; i < n; i++ )
+       {
+        int a, b;
+        cin >> a >> b;
+
+        pa.PB(make_pair(a, b));
+       }
+
+       //sort( all(pa));
+       //for ( int i =0; i < n; i++  )cout << pa[i].F << " " << pa[i].S << endl;
+        int cnt1 = 0,cnt2 = 0,cnt3 = 0,cnt4 = 0;
+        int ans = 0;
+
+        for ( int i = 0; i < n; i++ )
+        {
+            for ( int j = 0; j < n; j++ )
+            {
+                //cout << pa[i].F << " " << pa[i].S << " " << pa[j].F << " " << pa[j].S << endl;
+                if ( (pa[i].F < pa[j].F && pa[i].S == pa[j].S) )
+                {
+                    cnt1++;
+                    //cout << cnt << endl;
+                }
+                else if( (pa[i].F > pa[j].F && pa[i].S == pa[j].S) )cnt2++;
+                else if( (pa[i].F == pa[j].F && pa[i].S > pa[j].S) )cnt3++;
+                else if( (pa[i].F == pa[j].F && pa[i].S < pa[j].S) )cnt4++;
+            }
+            if( cnt1 > 0 && cnt2 > 0 && cnt3 > 0 && cnt4 > 0 )
+            {
+                ans++;
+               // cout << pa[i].F << " " << pa[i].S << endl;
+            }
+            cnt1 = cnt2 = cnt3 = cnt4 = 0;
+        }
+
+        cout << ans << endl;
+
+    return 0;
+}

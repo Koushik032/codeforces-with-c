@@ -1,0 +1,85 @@
+ 
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+ 
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            ll n, k;
+            cin >> n >> k;
+
+            string s;
+            cin >> s;
+
+            vector< ll >  capital(26 , 0), small(26, 0);
+
+            for ( int i = 0; i < s.size(); i++ )
+            {
+                if ( s[i] >= 'A' && s[i] <= 'Z' )
+                {
+                    capital[s[i] - 'A']++;
+                }
+                else{
+                    small[s[i] - 'a']++;
+                }
+            }
+
+            //for ( auto u : capital )cout << u << endl;
+
+            //for ( auto u : small )cout <<  u << endl;
+
+            //cout << capital.size() << " " << small.size() << endl;
+
+            int ans = 0;
+
+            for ( int i = 0; i < 26; i++ )
+            {
+                int val = min ( capital[i], small[i] );
+                ans += val;
+                small[i] -= val;
+                capital[i] -= val;
+                ll add = min(k, max(small[i] , capital[i]) / 2 );
+                k -= add;
+                ans += add;
+            }
+
+            cout << ans << endl;
+
+        }
+
+    return 0;
+}

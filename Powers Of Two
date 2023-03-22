@@ -1,0 +1,82 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(v) (v).begin(),(v).end()
+#define rall(v) (v).rbegin(),(v).rend()
+#define sz(x) (int)x.size()
+#define MOD 1000000007
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+//const int mx = 123;
+//int a[mx];
+
+int main()
+{
+    optimize();
+        
+            ll n, k;
+            cin >> n >> k;
+
+            vector< ll > v;
+
+            while( n != 0 )
+            {
+                ll x = n % 2;
+                n = n / 2;
+                v.PB(x);
+            }
+
+            //for ( auto u : v )cout << u << endl;
+            priority_queue< ll > q;
+            ll x = 0;
+            for ( int i = 0; i < v.size(); i++ )
+            {
+                if ( v[i] == 1 )
+                {
+                    q.push(pow(2,i));
+                    //cout << pow(2,i);
+                }
+            }
+
+            if ( q.size() > k)cout << "NO" << endl;
+            else{
+            while( q.size() != k )
+            {
+                ll a = q.top();
+                if ( a/2 < 1)break;
+                q.pop();
+                q.push(a/2);
+                q.push(a/2);
+                //if ( a/2 <= 1)break;
+            }
+
+
+            if ( q.size() != k)cout << "NO" << endl;
+            else{
+                cout << "YES" << endl;
+            while( !q.empty())
+            {
+                cout << q.top() << " ";
+                q.pop();
+            }
+        }
+        }
+       return 0;
+}

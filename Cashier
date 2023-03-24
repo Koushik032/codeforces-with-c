@@ -1,0 +1,55 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(v) (v).begin(),(v).end()
+#define rall(v) (v).rbegin(),(v).rend()
+#define sz(x) (int)x.size()
+#define MOD 1000000007
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+//const int mx = 1e5 + 5;
+
+int main()
+{
+    optimize();
+        
+        ll n, l, a;
+        cin >> n >> l >> a;
+
+        int time[n+5], service[n+5];
+
+        for ( int i = 0; i < n; i++ )
+        {
+            cin >> time[i] >> service[i]; 
+        }
+
+        ll start_time = 0, left_time = 0;
+
+        for ( int i = 0; i < n; i++ )
+        {
+            left_time += (time[i] - start_time) / a;
+            start_time = time[i] + service[i];
+        }
+
+        left_time +=  ( l - start_time ) / a;
+
+        cout << left_time << endl;
+        
+       return 0;
+}

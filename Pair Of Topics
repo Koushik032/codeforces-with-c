@@ -1,0 +1,73 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main()
+{
+    optimize();
+
+    ll n, cnt = 0;
+    cin >> n;
+
+    vector< ll > teacher(n), student(n), sum;
+
+    for ( auto &i : teacher )cin >> i;
+    for ( auto &u : student )cin >> u;
+
+
+    for ( ll i = 0; i < n; i++ )
+    {
+        sum.PB( teacher[i] - student[i] );
+    }
+    sort( all ( sum ));
+
+    ll ans = 0;
+
+    for ( ll i = 0; i < n; i++ )
+    {
+        ll value = (student[i] - teacher[i] );
+        ll upper = upper_bound(all(sum),value)-sum.begin();
+        
+        if ( (n - upper) <= 0 )continue;
+
+        ans += (n - upper);
+    }
+
+    for ( int i = 0; i < n; i++ )
+    {
+        if ( (teacher[i] - student[i]) > (student[i] - teacher[i]))
+        {
+            cnt++;
+        }
+    }
+
+    cout << (ans-cnt) / 2 << endl;
+
+    return 0;
+}

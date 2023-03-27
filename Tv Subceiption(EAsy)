@@ -1,0 +1,86 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+//const int mx = 1e5 + 123;
+
+int main()
+{
+    optimize();
+        int t;
+        cin >> t;
+        while ( t-- )
+        {
+            ll n, k, d, ans = INT_MAX;
+            cin >> n >> k >> d;
+
+            vl v;
+
+            for ( int i = 0; i < n; i++ )
+            {
+                ll a;
+                cin >> a;
+                v.PB(a);
+            }
+
+            map < ll , ll > cnt;
+            bool flag = true;
+
+            for ( int i = 0; i <= n - d; i++ )
+            {
+                for ( int j = i; j < (i+d); j++ )
+                {
+                    if ( flag )
+                    {
+                        cnt[v[j]]++;
+                    }
+                    else{
+                        cnt[v[j-1]]--;
+                        cnt[v[(i+d)-1]]++;
+                        break;
+                    }
+                }
+                flag = false;
+                //for ( auto u : cnt )cout << u.F << " "<<u.S << endl;
+                ll cnt1 = 0;
+                for ( auto u : cnt )
+                {
+                    if ( u.S != 0 )
+                    {
+                        cnt1++;
+                    }
+                }
+                ans = min( cnt1, ans);
+            }
+
+            cout << ans << endl;
+
+        }
+    return 0;
+}

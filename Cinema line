@@ -1,0 +1,89 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main()
+{
+    optimize();
+    
+        int n;
+        cin >> n;
+
+        vi v;
+
+        for ( int i = 0; i < n; i++ )
+        {
+            int a;
+            cin >> a;
+            v.PB(a);
+        }
+
+        int cnt25 = 0, cnt50 = 0, cnt100 = 0;
+        bool flag = true;
+
+        for (int i = 0; i < n; i++ )
+        {
+            if ( v[i] == 25 )cnt25++;
+            else if ( v[i] == 50 )
+            {
+                if ( cnt25 > 0 )
+                {
+                   cnt25--;
+                   cnt50++;
+                }
+                else{
+                    flag = false;
+                    //cout << 1 << endl;
+                    break;
+                }
+            }
+            else{
+                if ( cnt50 > 0 && cnt25 > 0 )
+                {
+                    cnt25--;
+                    cnt50--;
+                    cnt100++;
+                }
+                else if( cnt25 > 2 ){
+                    cnt25 -= 3;
+                    cnt100++;
+                }
+                else{
+                    flag = false;
+                    //cout << 2 << endl;
+                    break;
+                }
+            }
+        }
+
+        if ( flag )cout << "YES" << endl;
+        else cout << "NO" << endl;
+
+    return 0;
+}

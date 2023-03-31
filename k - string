@@ -1,0 +1,75 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+//const int mx = 1e5 + 123;
+
+
+int main()
+{
+    optimize();
+
+        int k;
+        cin >> k;
+
+        string s;
+        cin >> s;
+
+        map< char, int > cnt;
+        bool flag = true;
+        for ( auto u : s)cnt[u]++;
+
+        //for ( auto u : cnt )cout << u.F << " " << u.S << endl;
+       
+            for ( auto u : cnt )
+            {
+                if ( u.S % k != 0)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            sort(all(s));
+        if ( flag )
+        {
+            for ( int j = 0; j < k; j++ )
+                for ( auto u : cnt )
+                {
+                    for ( int i = 0; i < u.S/k; i++ )
+                    {
+                    cout << u.F;
+                }
+                }
+            
+        }
+        else{
+            cout << -1 << endl;
+        }
+    return 0;
+}

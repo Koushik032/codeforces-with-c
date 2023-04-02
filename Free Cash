@@ -1,0 +1,60 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main()
+{
+
+    int n, ans = 0, cnt = 0;
+    cin >> n;
+
+    vector< pair < int , int > > pa;
+
+    for ( int i = 0; i < n; i++ )
+    {
+        int h,m;
+        cin >> h >> m;
+        pa.PB({h,m});
+    }
+    for ( int i = 0; i < n-1; i++ )
+    {
+        if ( pa[i].F == pa[i+1].F && pa[i].S == pa[i+1].S )
+        {
+            cnt++;
+            ans = max( cnt, ans);
+        }
+        else{
+            cnt = 0;
+        }
+    }
+
+    cout << ans+1 << endl;
+
+    return 0;
+}

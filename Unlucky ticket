@@ -1,0 +1,74 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main()
+{
+
+        int n;
+        cin >> n;
+
+        string s;
+        cin >> s;
+
+        vector < int > first_half, second_half;
+
+        for ( int i = 0; i < s.size()/2;i++ )
+        {
+            first_half.PB(s[i] - '0');
+        }
+        //for ( auto u : first_half)cout << u << endl;
+            //cout << endl;
+
+        for ( int i = s.size()/2; i < s.size();i++ )
+        {
+            second_half.PB(s[i] - '0');
+        }
+        //for ( auto u : second_half)cout << u << endl;
+
+        sort(all(first_half));
+        sort(all(second_half));
+        int greater = 0, lower = 0;
+
+        for ( int i = 0; i < n; i++ )
+        {
+            if ( first_half[i] > second_half[i] )
+            {
+                greater++;
+            }
+            else if ( first_half[i] < second_half[i] )
+            {
+                lower++;
+            }
+        }
+        if ( greater == n || lower == n )cout << "YES"<< endl;
+        else cout << "NO" << endl;
+
+    return 0;
+}

@@ -1,0 +1,108 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main()
+{
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+           int n;
+           cin >> n;
+
+           string s;
+           cin >> s;
+
+
+           ll min = s[0] - 'a';
+           ll pos1 = 0;
+           for ( int i = 1; i < n; i++ )
+                {
+                    ll x = s[i] - 'a';
+                    if ( min < x )
+                    {
+                        min = x;
+                        pos1 = i;
+                        break;
+                    }
+                    else if ( min > x )
+                    {
+                        break;
+                    }
+                }
+
+                char a = 'a' + min;
+
+                //cout << a << " " << pos1 << endl;
+
+
+           //cout << min << endl;
+           char c;
+           ll pos = 0, cnt = 0;
+
+           for ( int i = pos1 + 1; i < s.size(); i++ )
+           {
+            ll a = s[i] - 'a';
+            //cout << s[i] << " " <<a << endl;
+            if ( min >= a )
+            {
+                min = a;
+                c = s[i];
+                cnt++;
+                pos = i;
+               // cout << min << " " << c << endl;
+            }
+           }
+           //cout << c << endl;
+           ll ma = 0;
+           if ( pos1 == 0)
+            ma = s[pos1] - 'a';
+       else  ma = s[pos1-1] - 'a';
+
+            //cout << ma << endl;
+           if ( cnt != 0 && ma >= min ){
+           cout << c;
+           for ( int i = 0; i < n; i++ )
+           {
+            if ( i == pos )continue;
+            else cout << s[i];
+           }
+           cout << endl;
+       }
+       else{
+        cout << s << endl;
+       }
+
+        }
+
+    return 0;
+}

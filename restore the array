@@ -1,0 +1,63 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main()
+{
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            ll n;
+            cin >> n;
+            
+            ll arr[n-1];
+
+            for ( int i = 0; i < n - 1; i++ )
+            {
+                cin >> arr[i];
+            }
+
+            deque < ll > dq;
+
+            for ( int i = 0; i < n - 2; i++ )
+            {
+                dq.PB( min(arr[i], arr[i+1]) );
+            }
+            
+            dq.push_front(arr[0]);
+            dq.push_back(arr[n-2]);
+
+            for ( auto u : dq )cout << u<< " ";
+                cout << endl;
+        }
+    return 0;
+}

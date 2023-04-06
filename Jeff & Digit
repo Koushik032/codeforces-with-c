@@ -1,0 +1,72 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main()
+{
+    int n, cnt5 = 0, cnt0 = 0, sum = 1, ans = 0;
+    cin >> n;
+
+    vector < int > v;
+
+    for ( int i = 0; i < n ; i++ )
+    {
+        int a;
+        cin >> a;
+        if ( a == 5 )cnt5++;
+        else cnt0++;
+    }
+        //cout << cnt5 << " " << cnt0 << endl;
+        if ( cnt0 == 0 )cout << -1 << endl;
+        else if ( cnt5 < 9 )cout << 0 << endl;
+        else{
+            for ( int i = 1; i <= cnt5; i++ )
+            {
+                sum = i * 5;
+                //cout << sum << endl;
+                if ( sum % 9 == 0 )
+                {
+                    ans = i;
+                }
+            }
+            //cout << ans << endl;
+
+            for ( int i = 0; i < ans; i++ )
+            {
+                cout << 5 ;
+            }
+            for ( int i = 0; i < cnt0; i++ )
+            {
+                cout << 0;
+            }
+            cout << endl;
+        }
+        
+    return 0;
+}

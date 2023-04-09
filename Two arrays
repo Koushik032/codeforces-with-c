@@ -1,0 +1,94 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+const int mx = 1e5 + 123;
+bitset< mx > isPrimes;
+vector< int > primes;
+
+int seivegen ( int n )
+{
+    isPrimes[2] = 1;
+    for ( int i = 3; i <= n ; i += 2 )
+    {
+        isPrimes[i] = 1;
+    }
+
+    for ( int i = 3; i <= sqrt(n); i += 2 )
+    {
+        if ( isPrimes[i] ){
+            for ( int j = i*i; j <= n; j += i )
+            {
+                isPrimes[j] = 0;
+            }
+        }
+    }
+
+}
+
+int main()
+{
+       int t;
+       cin >> t;
+
+       while ( t-- )
+       {
+        int n;
+        cin >> n;
+
+        vi v(n),v1(n);
+
+        for ( auto &i : v )
+        {
+            cin >> i;
+        }
+        for ( auto &i : v1 )
+        {
+            cin >> i;
+        }
+
+        bool flag = false;
+        sort(all(v));
+        sort(all(v1));
+
+        for ( int i = 0; i < n; i++ )
+        {
+            if ( abs(v[i] - v1[i] ) > 1 || v[i] > v1[i] )
+            {
+                flag = true;
+                break;
+            }
+        }
+        if ( flag )cout << "NO" << endl;
+        else cout << "YES" << endl;
+
+       }
+        
+    return 0; 
+}

@@ -1,0 +1,64 @@
+///   ***   ---   ||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main()
+{
+       int t;
+       cin >> t;
+
+       while ( t-- )
+       {
+        ll a, b, c;
+        cin >> a >> b >> c;
+
+        int first_shop = 0, second_shop = 0;
+
+        if ( a >= c )
+        {
+            second_shop = b;
+            first_shop = -1;
+        }
+        else if ( a < c )
+        {
+            first_shop = 1;
+            if ( a * b > c )
+            {
+                second_shop = b;
+            }
+            else{
+                second_shop = -1;
+            }
+        }
+
+        cout << first_shop << " " << second_shop << endl;
+
+       }         
+    return 0; 
+}

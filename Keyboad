@@ -1,0 +1,89 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+int main()
+{
+    optimize();
+
+    string s = "1234567890-=]qwertyuiop[asdfghjkl;'zxcvbnm,./";
+
+
+    char c;
+    cin >> c;
+
+    string s1;
+    cin >> s1;
+
+    vector < char > vc;
+
+    //cout << c << " "  << s1 << endl << s << endl;
+    if ( c == 'R' )
+    {
+        for ( int i = 0; i < s1.size(); i++ )
+        {
+            for ( int j = 0; j < s.size(); j++ )
+            {
+                if ( s1[i] == s[j] )
+                {
+                    vc.PB(s[j-1]);
+                    break;
+                }
+            }
+        }
+    }
+        else
+        {
+            for ( int i = 0; i < s1.size(); i++ )
+            {
+                for ( int j = 0; j < s.size(); j++ )
+                {
+                    if ( s1[i] == s[j] )
+                    {
+                        vc.PB(s[j+1]);
+                        break;
+                    }
+                }
+            }
+        }
+
+        for ( auto u : vc )cout << u ;
+
+        cout << endl;
+
+
+    return 0;
+}

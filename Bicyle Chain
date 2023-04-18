@@ -1,0 +1,84 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+ 
+int main()
+{
+    optimize();
+
+        int n, m, ans = 0, cnt1 = 0, x = 0, a= 0;
+        cin >> n;
+        vi padel(n);
+        map < int, int > cnt;
+
+        for ( auto &u : padel )cin >> u;
+
+        cin >> m;
+        vi wheel(m);
+        for ( auto &u : wheel )cin >> u;
+
+
+           // for ( auto u : padel )cout << u;
+           // for ( auto u : wheel )cout << u;
+
+
+        for ( int i = 0; i < n; i++ )
+        {
+            for ( int j = 0; j < m; j++ )
+            {
+                //cout << wheel[j] / padel[i] << endl;
+                if ( wheel[j] % padel[i] == 0 )
+                {
+                    a++;
+                    //cout <<  wheel[j] << " " <<  padel[i] << endl;
+                    //cout << i << " " << j << endl;
+                    if ( x == wheel[j] / padel[i] || ( a == 1 ))
+                    {
+                        //cout <<  wheel[j] << " " <<  padel[i] << endl;
+                        cnt1++;
+                        x = wheel[j] / padel[i];
+                        //cout << x << endl;
+                    }
+                    else{
+                        if ( wheel[j] / padel[i] > x )
+                        {
+                            cnt1 = 1;
+                            x = wheel[j] / padel[i];
+                        }
+                    }
+                    //cnt[wheel[j]/padel[i]]++;
+                    //cout << 1 << endl;
+                }
+            }
+        }
+        cout << cnt1 << endl;
+ 
+    return 0;
+}

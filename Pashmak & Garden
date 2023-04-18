@@ -1,0 +1,56 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+ 
+int main()
+{
+    optimize();
+
+        int x1, y1, x2, y2, a = 0;
+        cin >> x1 >> y1 >> x2 >> y2;
+
+        if ( x1 != x2 && y1 != y2 && abs(x1 - x2) != abs(y1 - y2) )
+        {
+            cout << -1 << endl;
+        }
+        else if( x1 == x2 )
+        {
+            cout << x1 + abs(y1-y2) << " " << y1 << " " << x2+ abs(y1-y2) << " " << y2 << endl;
+        }
+        else if ( y1 == y2 )
+        {
+            cout << x1 << " " << y1 + abs(x1-x2) << " " << x2 << " " << y2+ abs(x1-x2) << endl;
+        }
+        else{
+            cout << x1 << " " << y2 << " " << x2 << " " << y1 << endl;
+        }
+
+    return 0;
+}

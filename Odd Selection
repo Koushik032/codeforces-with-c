@@ -1,0 +1,83 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+ 
+ 
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int n, x, odd = 0, even = 0;
+            cin >> n >> x;
+
+            vi v;
+
+            for ( int i = 0; i < n; i++ )
+            {
+                int a;
+                cin >> a;
+                v.PB(a);
+                if ( a % 2 != 0 )
+                {
+                    odd++;
+                }
+                else even++;
+            } 
+            if ( odd == n && x % 2 == 0 )
+            {
+                cout << "No" << endl;
+            }
+            else if ( odd % 2 != 0 )
+            {
+                cout << "Yes" << endl;
+            }
+            else if ( odd % 2 == 0 && odd != 0 )
+            {
+                if ( x - (odd - 1) <= even )
+                {
+                    cout << "Yes" << endl;
+                }
+                else{
+                    cout << "No" << endl;
+                }
+            }
+            else
+            {
+                cout << "No" << endl;
+            }
+        }
+
+    return 0;
+}

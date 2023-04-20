@@ -1,0 +1,88 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+ 
+ 
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        bool flag = false;
+
+        while ( t-- )
+        {
+            ll n, k, sum = 0;
+            cin >> n >> k;
+
+            vl v;
+
+            if ( n % 2 == 0 && n / 2 >= k )
+            {
+                flag = true;
+                for ( int i = 0; i < k - 1; i++ )
+                {
+                    v.PB(2);
+                    sum += 2;
+                }
+
+                v.PB( n - sum );
+            }
+            else if ( (n % 2 != 0 && k % 2 != 0 && n / 1 >= k) || ( n % 2 == 0 && k % 2 == 0 && n / 1 >= k ) )
+            {
+                flag = true;
+
+                for ( int i = 0; i < k - 1; i++ )
+                {
+                    v.PB(1);
+                    sum += 1;
+                }
+                v.PB( n - sum );
+            }
+            else{
+                cout << "NO" << endl;
+                flag = false;
+            }
+
+            if ( flag )
+            {
+                cout << "YES" << endl;
+                for ( auto u : v )
+                {
+                    cout << u << " ";
+                }
+                cout << endl;
+            }   
+        }
+
+    return 0;
+}

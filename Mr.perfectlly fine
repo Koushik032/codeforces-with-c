@@ -1,0 +1,125 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+ 
+ 
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int n;
+            cin >> n;
+
+            vector< pair < int, string >> v, v01, v10, v11;
+
+            for ( int i = 0; i < n; i++ )
+            {
+                int a;
+                string s;
+                cin >> a >> s;
+                v.PB({a,s});
+            }
+
+            // for ( auto u : v )
+            // {
+            //     cout << u.F << " " << u.S << endl;
+            // }
+
+            //sort(all(v));
+
+            for ( auto u : v )
+            {
+                if ( u.S == "01" )
+                {
+                    v01.PB({u.F,u.S});
+                }
+            }
+            for ( auto u : v )
+            {
+                if ( u.S == "10" )
+                {
+                    v10.PB({u.F,u.S});
+                }
+            }
+            for ( auto u : v )
+            {
+                if ( u.S == "11" )
+                {
+                    v11.PB({u.F,u.S});
+                }
+            }
+            sort(all(v01));
+            sort(all(v10));
+            sort(all(v11));
+
+            // for ( auto u : v11 )
+            // {
+            //     cout << u.F << " " << u.S << endl;
+            // }
+
+            //cout << v01[0].F << " " << v01[0].S << endl;
+            //cout << v10[0].F << " " << v10[0].S << endl;
+            //cout << v11[0].F << " " << v11[0].S << endl;
+
+
+            if ( v01.empty() && v10.empty() && !v11.empty() )
+            {
+                cout << v11[0].F << endl;
+            }
+            else if( v01.empty() && v10.empty() && v11.empty() )
+            {
+                cout << -1 << endl;
+            }
+            else if ( (v01.empty() || v10.empty()) && v11.empty() )
+            {
+                cout << -1 << endl;
+            }
+            else if ( v11.empty() )
+            {
+                cout << v01[0].F+v10[0].F << endl;
+            }
+            else if( (v01.empty() || v10.empty()) && !v11.empty() )
+            {
+                cout << v11[0].F << endl;
+            }
+            else
+            {
+                cout<< min((v01[0].F+v10[0].F),v11[0].F) << endl;
+            }
+
+        }
+
+    return 0;
+}

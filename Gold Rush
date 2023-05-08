@@ -1,0 +1,76 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int main()
+{
+
+        int t;
+       cin >> t;
+       while ( t-- )
+        {
+            ll n, m;
+            cin >> n >> m;
+
+            bool flag = false;
+
+            queue< ll > q;
+
+            q.push(n);
+
+            while( q.size() )
+            {
+                int x = q.front();
+                q.pop();
+                if ( x == m )
+                {
+                    flag = true;
+                    break;
+                }
+                else{
+                        int a, b;
+                    if ( x % 3 == 0 )
+                    {
+                        a= x /3;
+                        b = 2 *a;
+                        q.push(a);
+                        q.push(b);
+                    }
+
+                }
+
+            }
+
+            if ( flag )
+                cout << "YES" << endl;
+            else cout << "NO" << endl;
+
+        }
+
+    return 0;
+}
+

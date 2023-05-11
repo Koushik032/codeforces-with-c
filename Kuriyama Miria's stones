@@ -1,0 +1,86 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+ll presum[100123], presum1[100123];
+ 
+int main()
+{
+    optimize();
+        //cout << mx << endl;
+        ll n;
+        cin >> n;
+
+        vl v;
+
+        for ( int i = 0; i < n; i++ )
+        {
+            ll a;
+            cin >> a;
+            v.PB(a);
+        }
+        for ( int i = 1; i <= n; i++ )
+        {
+            presum1[i] = presum1[i-1] + v[i-1];
+        }
+
+        sort(all(v));
+
+        for ( int i = 1; i <= n; i++ )
+        {
+            presum[i] = presum[i-1] + v[i-1];
+        }
+
+        // for ( int i = 0; i <= n; i++ )
+        // {
+        //     cout << presum1[i] << endl;
+        // }
+
+        ll m;
+        cin >> m;
+
+        while ( m-- )
+        {
+            ll x, l, r;
+            cin >> x >> l >> r;
+
+
+            if ( x == 1 )
+            {
+                cout << presum1[r] - presum1[l-1] << endl;
+            }
+            else
+            {
+                cout << presum[r] - presum[l-1] << endl;
+            }
+        }
+
+    return 0;
+}

@@ -1,0 +1,71 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+ll presum[100123], presum1[100123];
+ 
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int n, x = 0, y= 0, z= 0;
+            cin >> n;
+
+            vi v;
+            bool flag = true;
+
+            for ( int i =0; i < n; i++ )
+            {
+                int a;
+                cin >> a;
+                v.PB(a);
+            }
+
+            for ( int i = 1; i < n-1 ; i++ )
+            {
+                if ( v[i] > v[i-1] && v[i] > v[i+1] )
+                {
+                    cout << "YES" << endl;
+                    cout << i << " " << i+1 << " " << i+2 << endl;
+                    flag = false;
+                    break;
+                }
+            }
+            if ( flag )cout << "NO" << endl;
+
+        }
+
+    return 0;
+}

@@ -1,0 +1,73 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+ 
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- ) 
+        {
+            ll n, k, sum = 0,sum1 = 0;
+            cin >> n >> k;
+
+            vl v, presum(n+1);
+
+            for ( int i = 0; i < n; i++ )
+            {
+                ll a ;
+                cin >> a;
+                v.PB(a);
+            } 
+            sort(all(v));
+
+            for ( int i = 1; i <= n; i++ )
+            {
+                presum[i] = presum[i-1] + v[i-1];
+            }
+
+            //for ( auto u : presum )cout << u << endl;
+            ll ans = 0;
+
+            for ( int i = 0; i <= k; i++ )
+            {
+                ans = max(ans, presum[n - k + i] - presum[2 * i]);
+                //cout << ans << endl;
+            }
+
+            cout << ans << endl;
+            
+        }
+
+    return 0;
+}

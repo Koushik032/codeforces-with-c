@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    vector<string>v;
+
+    vector<pair<string,string>>vp;
+
+    for ( int i = 0; i < n; i++ )
+    {
+        string s,s1;
+        cin >> s >> s1;
+
+        vp.push_back({s,s1});
+    }
+
+    //for ( auto u : vp )cout << u.first << " " <<u.second << endl;
+
+    for ( int i = 0; i < 4; i++ )
+    {
+        for ( auto u : vp )
+        {
+            if ( i == 0 && u.second == "rat" )
+            {
+                v.push_back(u.first);
+            }
+            else if ( i == 1 && ((u.second == "woman")||(u.second=="child")))
+            {
+                //cout << u.second << endl;
+                v.push_back(u.first);
+            }
+            else if( i == 2 && u.second == "man" )
+            {
+                v.push_back(u.first);
+            }
+            else if( i == 3 && u.second == "captain"){
+                v.push_back(u.first);
+            }
+        }
+    }
+
+    for ( auto u : v )
+    {
+        cout << u << endl;
+    }
+
+
+    return 0;
+}

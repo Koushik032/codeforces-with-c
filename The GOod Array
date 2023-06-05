@@ -1,0 +1,62 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+ 
+#define MOD 1000000007
+ 
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+ 
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ 
+int gcd ( int a, int b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+//const ll mx =1e6+123;
+//ll sum[mx];
+
+int main()
+{
+    optimize();
+
+            int t;
+            cin >> t;
+            
+            while ( t-- )
+            {
+            	int n, m;
+            	cin >> n >> m;
+            	
+            	vi v(n+2, 0);
+            	
+            	for ( int i = 1; i<= n; i+= m )
+            	{
+            		v[i] = 1;
+            	}
+            	
+            	int cnt = 0;
+            	
+            	for ( int i = 1; i < n; i++ )
+            	{
+            		if( v[i] == 1 )cnt++;
+            	}
+            	
+            	cout << cnt+1 << endl;
+            }
+            
+    return 0;
+}

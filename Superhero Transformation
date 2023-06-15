@@ -1,0 +1,73 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+const int mx =1e5+123;
+bitset <mx> isprime;
+vector <int> primes;
+
+
+int main()
+{
+    optimize();
+
+            
+        string s,s1;
+        cin >> s >> s1;
+
+        int vow = 0, cons = 0, vow1 = 0, cons1 = 0;
+
+        if( s.size() != s1.size() )cout << "No" << endl;
+        else{
+        for ( int i = 0; i < s.size(); i++ )
+        {
+            if ( (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u' ) && ( s1[i] == 'a' || s1[i] == 'e' || s1[i] == 'i' || s1[i] == 'o' || s1[i] == 'u' ))
+            {
+                cons++;
+                //cout << 1 << endl;
+            }
+            else if ( (s[i] != 'a' && s[i] != 'e' && s[i] != 'i' && s[i] != 'o' && s[i] != 'u' ) && ( s1[i] != 'a' && s1[i] != 'e' && s1[i] != 'i' && s1[i] != 'o' && s1[i] != 'u' ) )
+            {
+                cons++;
+                //cout << 2 << endl;
+            }
+            //else cout << "No" << endl;
+        }
+
+
+        if ( cons == s.size() )cout << "Yes" << endl;
+        else cout << "No" << endl;
+        }
+
+    return 0;
+}

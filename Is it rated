@@ -1,0 +1,87 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int mx =1e5+123;
+//bitset <mx> isprime;
+//vector <int> primes;
+
+
+int main()
+{
+    optimize();
+
+            int n, cnt = 0;
+            cin >> n;
+
+            vector<pair< int , int >> pa;
+
+            for ( int i = 0; i < n; i++ )
+            {
+                int a, b;
+                cin >> a >> b;
+
+                pa.PB({a,b});
+            }
+            bool done = false;
+
+            //sort( all ( pa ),grater<int>());
+            //int sz = unique( all(pa))-pa.begin();
+
+            //cout << sz << endl;
+
+            for ( auto u : pa )
+            {
+                
+                if ( u.F != u.S )
+                {
+                    done = true;
+                    break;
+                }
+            }
+
+            for ( int i = 0;i < n-1; i++ )
+            {
+                if( pa[i].F >= pa[i+1].F )
+                {
+                    cnt++;
+                }
+            }
+
+            if( done )cout << "rated" << endl;
+            else if ( cnt +1 != n )cout << "unrated" << endl;
+            else cout << "maybe" << endl;
+
+
+    return 0;
+}

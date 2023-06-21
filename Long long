@@ -1,0 +1,93 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int mx =1e5+123;
+//bitset <mx> isprime;
+//vector <int> primes;
+
+
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            ll n;
+            cin >> n;
+
+            vl v;
+            ll sum = 0, minu = 0;
+
+            for ( ll i = 0; i < n; i++ )
+            {
+                ll a;
+                cin >>a;
+                if ( a != 0 )
+                {
+                    v.PB(a);
+                    sum+= abs(a);
+                }
+            }
+
+            //sort(all(v));
+
+        ll cnt = 0, ans = 0;
+
+        for ( ll i = 0; i < v.size(); i++ )
+        {
+            if ( v[i] < 0 && v[i+1] < 0 )
+            {
+                cnt++;
+            }
+            else
+            {
+                if ( v[i] < 0 )
+                {
+                ans++;
+                cnt = 0;
+                }
+            }
+        }
+
+        if ( cnt > 0 )ans++;
+
+        cout << sum << " " << ans << endl;
+
+        }
+
+    return 0;
+}

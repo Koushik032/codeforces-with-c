@@ -1,0 +1,75 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int n, x;
+            cin >> n >> x;
+
+            vi v(n);
+            int sum = 0, l = -1, r = 1;
+            for ( int i = 0; i <n; i++ )
+            {
+                cin >> v[i];
+
+                if ( v[i] % x != 0 )
+                {
+                    if ( l == - 1 )
+                        l = i;
+
+                    r = i;
+                }
+
+                sum += v[i];
+            }
+
+            if ( sum % x != 0 )cout << n << endl;
+            else if ( l == -1 )cout << -1 << endl;
+            else cout << n - min(l+1, n-r) << endl;
+
+
+        }
+
+    return 0;
+}

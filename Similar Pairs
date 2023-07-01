@@ -1,0 +1,94 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int n;
+            cin >> n;
+
+            vi v(n);
+
+            for ( auto &u : v)cin >> u;
+
+            int even = 0, odd = 0, even1 = 0, odd1 = 0;
+            sort(all(v));
+
+            for ( int i = 0; i < n; i++ )
+            {
+                if ( v[i]%2==0)even1++;
+                else odd1++;
+            }
+            bool done = false;
+            //for ( auto u : v)cout << u << " ";
+                //cout << endl;
+            //cout << even1 << " " << odd1 << endl;
+
+            if ((even1 % 2 == 0 && odd1 % 2 == 0))
+            {
+                cout << "YES" << endl;
+            }
+            else if ((even1 % 2 != 0 && odd1 % 2 != 0))
+            {
+                for ( int i = 0; i < n-1; i++ )
+                {
+                    for ( int j = i + 1; j < n; j++ )
+                    {
+                        if ( v[i] % 2 != v[j] % 2 && abs(v[i]-v[i+1]) == 1 )
+                        {
+                            done = true;
+                            break;
+                        }
+                    }
+                    if ( done )break;
+                }
+                if ( done )cout << "YES" << endl;
+                else cout << "NO" << endl;
+            }
+            else
+            {
+                cout << "NO" << endl;
+            }
+        }
+    return 0;
+}

@@ -1,0 +1,68 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+
+int main()
+{
+    optimize();
+
+        int n, a, b, c;
+        cin >> n >> a >> b >> c;
+
+        int ans = 0;
+
+        for ( int i = 0; i <= n/a; i++ )
+        {
+            int x = i * a;
+            int y = n- x;
+
+            for ( int j = 0;j <= y/b; j++ )
+            {
+                int z = j * b;
+                int d = y - z;
+
+                if ( d % c == 0 )
+                {
+                    ans = max(ans, i+j+(d/c));
+                }
+            }
+        }
+
+        cout << ans << endl;
+
+    return 0;
+}

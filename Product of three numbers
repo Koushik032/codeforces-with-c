@@ -1,0 +1,81 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+    
+    while ( t-- )
+    {
+        int n, cnt = 1;
+        cin >> n;
+        vector< int > v;
+        int x = n;
+        //cout << x << endl;
+
+        for ( int i = 2; i*i <= n; i++ )
+        {
+            if ( x % i == 0 && cnt < 3 )
+            {
+                x /= i;
+                //cout << x << endl;
+                cnt++;
+                v.PB(i);
+            }
+        }
+        if ( x > 1)v.PB(x);
+        sort(all(v));
+        int sz = unique(all(v)) - v.begin();
+
+        //for ( auto u : v)cout << u << endl;
+
+        if ( sz == 3 )
+        {
+            cout << "YES" << endl;
+            for ( auto u : v)cout << u << " ";
+                cout << endl;
+        }
+        else
+             cout << "NO" << endl;
+    }
+
+    return 0;
+}

@@ -1,0 +1,108 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            ll n;
+            cin >> n;
+
+            vl v(n);
+
+            for ( auto &u : v )cin >> u;
+
+            //int x = 0;
+            ll neg = 0, pos = 0;
+
+            for ( auto u : v)
+            {
+                if ( u < 0 )neg++;
+                else pos++;
+            }
+
+            ll x = v[0];
+            ll ans = 0, cnt = 0;
+            bool done = false;
+
+            if ( n == 1 )cout << v[n-1] << endl;
+            //else if ( neg == n || pos == n )cout << -1 << endl;
+            else{
+                for ( ll i = 1; i < n; i++ )
+                {
+                    if ( x > 0 && v[i] > 0 )
+                    {
+                        x = max(x,v[i]);
+                        done = false;
+                        //cout << x << endl;
+                    }
+                    else if ( x < 0 && v[i] < 0 )
+                    {
+                        x = min(abs(x),abs(v[i]));
+                        x *= (-1);
+                        done = false;
+                        //cout << x << endl;
+                    }
+                    else
+                    {
+                        cnt +=x;
+                        //cout << x << endl;
+                        x = v[i];
+                        done = true;
+                        if ( n == i+1 )
+                        {
+                            cnt+= x;
+                        }
+                    }
+                }
+                if ( !done )
+                {
+                    cnt += x;
+                }
+
+                cout << cnt << endl;
+            }
+        }
+
+    return 0;
+}

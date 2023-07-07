@@ -1,0 +1,64 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+    
+        while ( t-- )
+        {
+            string s, s1, s2;
+            cin >> s >> s1 >> s2;
+            int cnt = 0;
+
+            if ( s[0] == s[1] && s[1] == s[2] && s[1] != '.')cout << s[0] << endl;
+            else if( s1[0] == s1[1] && s1[1] == s1[2] && s1[1] != '.') cout << s1[0] << endl;
+            else if ( s2[0] == s2[1] && s2[1] == s2[2] && s2[1] != '.') cout << s2[0] << endl;
+            else if ( s[0] == s1[0] && s1[0] == s2[0] && s[0] != '.' )cout << s[0] << endl;
+            else if ( s[1] == s1[1] && s1[1] == s2[1] && s[1] != '.')cout << s1[1] << endl;
+            else if ( s[2] == s1[2] && s2[2] == s1[2] && s[2] != '.' )cout << s2[2] << endl;
+            else if ( s[0] == s1[1] && s1[1] == s2[2] && s[0] != '.')cout << s[0] << endl;
+            else if ( s[2] == s1[1] && s1[1] == s2[0] && s[2] != '.')cout << s[2] << endl;
+            else cout << "DRAW" << endl;
+        }
+
+    return 0;
+}

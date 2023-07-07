@@ -1,0 +1,105 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+    
+        while ( t-- )
+        {
+            int n, m, h;
+            cin >> n >> m >> h;
+            int dpo = 0, dpen =0;
+
+            vector<int> v;
+
+            vector< pair < int, int>> point;
+
+            for ( int i = 0; i < n; i++ )
+            {
+                for ( int j = 0; j < m; j++ )
+                {
+                    int a;
+                    cin >> a;
+
+                    v.PB(a);
+                }
+
+                sort(all(v));
+                int ans = 0, cnt = 0, pen = 0, done = 0;
+
+                for ( int i = 0; i < m; i++ )
+                {
+                    if ( ans+v[i] <= h )
+                    {
+                        ans+= v[i];
+                        cnt++;
+                        done += v[i];
+                        pen += done;
+                        //cout << pen << endl;
+                    }
+                }
+                if ( i == 0 ){
+                dpo = cnt;
+                dpen = -pen;
+                }
+                pen *= (-1);
+                point.PB({cnt,pen});
+                v.clear();
+            }
+
+            sort(point.begin(),point.end());
+            reverse(all(point));
+
+            //for ( auto u : point )cout << u.F << " " << u.S << endl;
+
+            for ( int j = 0; j < point.size(); j++)
+                {
+                    if (point[j].F == dpo && point[j].S == dpen )
+                    {
+                        cout << j + 1 << endl;
+                        break;
+                    }
+                }
+        }
+
+    return 0;
+}

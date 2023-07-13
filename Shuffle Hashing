@@ -1,0 +1,108 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            string s, s1;
+            cin >> s >> s1;
+            bool done = false;
+
+            map <char, int> mp, cnt;
+
+            for ( auto u : s )mp[u]++;
+                int x = 0, y = mp.size();
+            
+
+            if ( s1.size() >= s.size( )){
+            for ( int j = 0; j <= s1.size()-s.size(); j++ )
+            {
+                for ( int i = j; i < s.size()+j; i++ )
+                {
+                    if ( mp[s1[i]] > 0 )
+                    {
+                        mp[s1[i]]--;
+                        x++;
+                    }
+                    else
+                    {
+                        mp[s1[i]]++;
+                    }
+                }
+
+                // for ( auto u : mp )
+                // {
+                //     //if ( u.S == 0 )x++;
+                //     cout << u.F << " " << u.S << endl;
+                // }
+                //cout << endl;
+
+                //cout << x <<" " << y << endl;
+                if ( x == s.size() )
+                {
+                    done = true;
+                    break;
+                }
+                else
+                {
+                    mp.clear();
+                    for ( auto u : s)mp[u]++;
+                        x = 0;
+                }
+
+            }
+            }
+
+            if ( done )cout << "YES" << endl;
+            else cout << "NO" << endl;
+
+            // for ( auto u : mp)
+            // {
+            //     cout << u.F << " " << u.S << endl;
+            // }
+            // for ( auto u : cnt)
+            // {
+            //     cout << u.F << " " << u.S << endl;
+            // }
+            //cout << mp[s[0]] << endl;
+        }
+
+    return 0;
+}

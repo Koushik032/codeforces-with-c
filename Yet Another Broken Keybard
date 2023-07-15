@@ -1,0 +1,83 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+
+int main()
+{
+    optimize();
+        
+        int n, k;
+        cin >> n >> k;
+
+        string s;
+        cin >> s;
+
+        map<char, int> mp;
+
+        for ( int i = 0; i < k; i++ )
+        {
+            char a;
+            cin >> a;
+            mp[a]++;
+        }
+
+        //for ( auto u : mp)cout << u.F << " " << u.S << endl;
+
+        ll ans = 0, cnt = 0;
+
+        for( int i = 0; i < n; i++ )
+        {
+            if ( mp[s[i]] > 0 )
+                {
+                    //cout << s[i] << endl;
+                    cnt++;
+                    //cout << cnt << endl;
+                }
+            else
+            {
+                ans += (cnt*(cnt+1))/2;
+                cnt = 0;
+                //cout << ans << endl << endl;
+            }
+        }
+
+        if ( cnt > 0 )ans += (cnt*(cnt+1))/2;
+
+        cout << ans << endl;
+
+    return 0;
+}

@@ -1,0 +1,99 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+
+int main()
+{
+    optimize();
+        
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int n;
+            cin >> n;
+
+            vl v(n);
+
+            for ( auto &u :v)cin >> u;
+
+            int odd = 0, even = 0;
+
+            for ( auto u : v)
+            {
+                if ( u % 2 == 0)even++;
+                else odd++;
+            }
+            //cout << even << " " << odd << endl;
+
+            if ( even == n )cout << "Alice" << endl;
+            else
+            {
+                int x = 0;
+                if ( odd % 2 != 0)x = (odd/2)+1;
+                else x = odd/2;
+
+                int y = 0;
+                if ( even % 2 != 0 && even != 0)y = (even/2)+1;
+                else y = even/2;
+
+                if ( odd == 1 && even % 2 != 0)cout << "Alice" << endl;
+                else if ( x % 2 == 0 )
+                {
+                    cout << "Alice" << endl;
+                }
+                else
+                {
+                    int z = 0;
+                    if ( n % 2 != 0)z = (n/2)+1;
+                    else z = n/2;
+
+                    if ( (z - y) % 2 == 0 )
+                    {
+                        cout << "Alice" << endl;
+                    }
+                    else
+                    {
+                        cout << "Bob" << endl;
+                    }
+                }
+            }
+        }
+
+    return 0;
+}

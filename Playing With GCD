@@ -1,0 +1,85 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+
+int main()
+{
+    optimize();
+        
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            ll n;
+            cin >> n;
+
+            vl v(n+2,1), b(n+2,1);
+
+            for ( ll i = 1; i <= n; i++ )
+            {
+               cin >> v[i];
+            }
+
+            // for ( auto u : v)cout << u << " ";
+            //     cout << endl;
+            bool done =  false;
+
+            for ( ll i = 1; i <= n+1; i++ )
+            {
+                b[i] = lcm(v[i],v[i-1]);
+            }
+
+            // for ( auto u : b)cout << u << " ";
+            //     cout << endl;
+
+            for ( int i = 1; i <= n; i++ )
+            {
+                if ( gcd(b[i],b[i+1]) != v[i] )
+                {
+                    done = true;
+                    break;
+                }
+            }
+
+            if ( done )cout << "NO" << endl;
+            else cout << "YES" << endl;
+            
+        }
+
+    return 0;
+}

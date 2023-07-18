@@ -1,0 +1,76 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+
+//const int nx = 1e5 + 123;
+//int vis[mx];
+
+
+int main()
+{
+    optimize();
+        
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int n;
+            cin >> n;
+
+            string s;
+            string temp = " ", temp1= " ";
+            cin >> s;
+
+            map<string , int> mp;
+            bool done = false;
+
+            for ( int i = 0; i < n-2; i++ )
+            {      
+                    mp[s.substr(i,2)]++;
+                    if(mp[s.substr(i+2,2)] > 0 )
+                    {
+                        done = true;
+                        break;
+                    }
+            }
+            //cout << s.substr(1,2) << endl;
+            //cout << temp << endl;
+
+            if ( done )cout << "YES" << endl;
+            else cout << "NO" << endl;
+
+        }
+
+    return 0;
+}

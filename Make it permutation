@@ -1,0 +1,85 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b )
+{ 
+    return __gcd ( a, b );
+}
+ll lcm ( ll a, ll b )
+{
+    return a * ( b / gcd ( a, b ) );
+}
+const int mx =1e5+123;
+// int arr[mx], arr1[mx];
+//bitset <mx> isprime;
+//vector <int> primes;
+int arr[mx];
+
+int main()
+{
+    optimize();
+        
+        ll t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int n;
+            ll c, d;
+            cin >> n >> c >> d;
+
+            vl v(n+1);
+            v[0] = 0;
+            for ( int i=1; i <= n; i++ )
+            {
+                cin >> v[i];
+            }
+
+            sort(all(v));
+
+            int cur_need = 0,del = 0;
+
+            ll ans =1ll * (n * c) + d;
+
+            for ( int i = 1; i <= n; i++ )
+            {
+                if ( v[i] != v[i-1] )
+                {
+                    cur_need += v[i] - v[i-1] - 1;
+                }
+                else
+                {
+                    del++;
+                }
+
+                ans = min( ans, 1ll * c * (del + n - i) + 1ll * d * cur_need );
+            }
+
+            cout << ans << endl;
+            
+        }
+
+    return 0;
+}

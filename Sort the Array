@@ -1,0 +1,166 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){     return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+int main()
+{
+    optimize();
+        
+        int n;
+        cin >> n;
+
+        vl v(n), v1;
+
+        for ( auto &u:v)
+            {
+                cin >> u;
+                v1.PB(u);
+            }
+
+            //for ( auto u : v1)cout << u  << endl;
+
+        ll cnt = 1, cnt1 = 1, incnt=1, decnt = 1, done = 1;
+
+    for ( int i = 0; i < n-1; i++ )
+    {
+        if ( v[i] < v[i+1] )cnt++;
+    }
+    for ( int i = 0; i < n-1; i++ )
+    {
+        if ( v[i] > v[i+1] )cnt1++;
+    }
+
+    for ( int i = 0; i < n-1; i++ )
+    {
+        if ( v[i] > v[i+1] ){
+            incnt = i;
+            break;
+        }
+    }
+    for ( int i = 0; i < n-1; i++ )
+    {
+        if ( v[i] < v[i+1] ){
+            decnt = i;
+            break;
+        }
+    }
+
+    int fiincre = 0, lasincre = 0;
+
+    for ( int i = 0; i < n-1 ;i++ )
+    {
+        if ( v[i] < v[i+1] )
+        {
+            fiincre = i;
+        }
+        else
+        {
+            break;
+        }
+    }
+    for ( int i = 0; i < n -1;i++ )
+    {
+        if ( v[i] < v[i+1] )
+        {
+            if ( i > fiincre )
+            {
+                if ( v[i] < v[i+1] )
+                {
+                    lasincre = i;
+                    break;
+                }
+            }
+        }
+    }
+    if ( lasincre == 0 )lasincre = n-1;
+
+
+    //cout << fiincre << " " <<lasincre << endl;
+
+    reverse(v1.begin()+fiincre+1,v1.begin()+lasincre+1);
+
+    //for ( auto u : v1)cout << u  << endl;
+
+    if ( incnt < decnt )
+    {
+    reverse(v.begin()+incnt,v.begin()+decnt+1);
+    }
+    else
+    {
+        reverse(v.begin()+incnt,v.end());
+    }
+
+    if ( cnt == n )
+    {
+        cout << "yes" << endl;
+        cout << 1 << " " << 1 << endl;
+    }
+    else if ( cnt1 == n )
+        {
+            cout << "yes" << endl;
+            cout << 1 << " " << n << endl;
+        }
+    else
+    {
+        for ( int i = 0; i < n-1; i++ )
+        {
+            if ( v[i] < v[i+1] )done++;
+        }
+
+        if ( done == n )
+        {
+            cout << "yes" << endl;
+            if ( incnt > decnt )
+            {
+                cout << incnt+1 << " " << n << endl;
+            }
+            else
+            {
+                cout << incnt+1 << " " << decnt+1 << endl;
+            }
+        }
+        else
+        {
+            done = 1;
+            for ( int i = 0; i < n-1; i++ )
+            {
+                if ( v1[i] < v1[i+1] )done++;
+            }
+
+            if ( done == n )
+            {
+                cout << "yes" << endl;
+                cout << fiincre+2 << " " << lasincre+1 << endl;
+            }
+            else
+            {
+                cout << "no" << endl;
+            }
+        }
+   }
+    return 0;
+}

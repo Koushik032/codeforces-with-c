@@ -1,0 +1,68 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){     return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+int main()
+{
+    optimize();
+        
+
+            string s;
+            cin >> s;
+            int cnt = 0;
+
+            //cout << s << endl;
+
+            vector< char >s1;
+
+            for ( int i = 0; i < s.size(); i++ )
+            {
+                if ( s[i] == '/' )
+                {
+                    cnt++;
+                }
+                else
+                {
+                    if ( s[i-1] == '/' )
+                    {
+                        s1.PB(s[i-1]);
+                        s1.PB(s[i]);
+                        cnt = 0;
+                    }
+                    else
+                    {
+                        s1.PB(s[i]);
+                        cnt = 0;
+                    }
+                }
+            }
+            if ( s1.size() == 0 )s1.PB(s[s.size()-1]);
+
+            for ( auto u : s1)cout <<u;
+        
+    return 0;
+}

@@ -1,0 +1,96 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){     return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+int main()
+{
+    optimize();
+
+       int t;cin >> t;
+
+       while ( t-- )
+       {
+            int n;cin >> n;
+
+            vi v((n*(n-1))/2);
+
+            for ( auto & u : v)cin >> u;
+                map<int,int> mp;
+
+            for ( auto u : v)mp[u]++;
+
+            sort(all(v));
+
+            int sz = unique(all(v)) - v.begin();
+
+            if ( sz == 1 )
+            {
+                for ( int i = 0; i < n; i++ )
+                {
+                    cout << v[0] << " ";
+                }
+                cout << endl;
+            }
+            else
+            {
+                if ( sz == n - 1 )
+                {
+                    for ( int i = 0; i < sz; i++ )
+                    {
+                        cout << v[i] << " ";
+                    }
+                    cout << v[sz-1] << endl;
+                }
+                else
+                {
+                    int num = 0, x = n-1;
+                    for ( auto u : mp )
+                    {
+                        int  y = 0;
+                        while ( u.S > 0 )
+                        {
+                            u.S -= x;
+                            x--;
+                            y++;
+                        }
+
+                        for ( int i = 0; i < y; i++ )
+                        {
+                            cout << u.F << " ";
+                            num = u.F;
+                        }
+                    }
+
+                    cout << num  << endl; 
+                }
+            }
+            
+       }
+
+    return 0;
+}

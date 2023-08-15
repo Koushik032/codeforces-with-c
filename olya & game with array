@@ -1,0 +1,79 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){     return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+int main()
+{
+    optimize();
+
+        int t;cin >> t;
+
+        while ( t-- )
+        {
+            ll n;
+            cin >> n;
+            ll mn = INT_MAX;
+            
+            vector<vector<ll>>vv;
+            while ( n-- )
+            {
+                ll k;
+                cin >> k;
+                vector<ll> v;
+                for ( int i = 0; i < k; i++ )
+                {
+                    ll a;
+                    cin >> a;
+                    mn = min ( a, mn);
+                    v.PB(a);
+                }
+                sort(all(v));
+
+                vv.PB(v);
+            }
+
+            vector< ll > ans;
+
+            for ( int i = 0; i < vv.size(); i++ )
+            {
+                ans.PB(vv[i][1]);
+            }
+
+            sort(all(ans));
+            ll sum = 0;
+
+            for ( int i = 1; i < ans.size(); i++ )
+            {
+                sum += ans[i];
+            }
+            cout << sum + mn << endl;
+            
+        }
+
+    return 0;
+}

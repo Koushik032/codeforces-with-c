@@ -1,0 +1,66 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){     return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            ll n;
+            cin >> n;
+
+            vl v(n);
+
+            for ( int i = 0; i < n; i++ )
+            {
+                v[i] = i+1;
+            }
+
+            ll mx = 0, ans = 0, sum = 0;
+            for ( ll i = 0; i < n; i++ )
+            {
+                vl v1 = v;
+                reverse(v1.begin()+i, v1.end());
+                for ( ll j = 0; j < n; j++ )
+                {
+                    sum += v1[j] * (j+1);
+                    mx = max(mx,v1[j] * (j+1));
+                }
+                ans = max(ans, sum - mx);
+                sum = 0,mx = 0;
+            }
+
+            cout << ans << endl;
+        }
+        
+    return 0;
+}

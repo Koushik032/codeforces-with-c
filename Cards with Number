@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+#include<fstream>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+int main(){
+
+        ifstream ifile;
+        ofstream ofile;
+
+        ifile.open("input.txt");
+        ofile.open("output.txt");
+
+        int n = 0;
+        ifile >> n;
+
+        vector<int> v(2 * n, 0);
+
+        map<int,int>mp;
+
+        bool done = false;
+
+        for(int i = 0;i < 2 * n;i++) ifile >> v[i];
+
+        for ( auto u : v) mp[u]++;
+
+        for ( auto u : mp){
+            if ( u.S % 2 != 0 ){
+                done = true;
+                break;
+            }
+        }
+
+        if ( done ){
+            ofile << -1;
+        }
+        else{
+            vector<pair<int,int>> pa;
+
+            for ( auto i = 0; i < 2*n; i++ ){
+                pa.PB({v[i], i+1});
+            }
+            sort(all(pa));
+            ll cnt = 0;
+            for ( auto u : pa){
+                if ( cnt % 2 == 0)
+                    ofile << u.S << " ";
+                else{
+                    ofile << u.S << endl;
+                }
+                cnt++;
+            }
+        }
+}

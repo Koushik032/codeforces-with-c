@@ -1,0 +1,120 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){     return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+int main()
+{
+    optimize();
+        
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            ll x, y;
+            cin >> x >> y;
+
+            string s, s1;
+            cin >> s;
+            bool done = true;
+
+            ll n = s.size();
+
+            for ( ll i = 0; i < n; i++ )
+            {
+                if ( s[i] == '0' )x--;
+                else if ( s[i] == '1')y--;
+            }
+
+            for ( ll i = 0; i < n; i++ )
+            {
+                if ( s[i] == '0' && s[n-i-1] == '?' && x > 0 )
+                {
+                    x--;
+                    s[n-i-1] = '0'; 
+                }
+                else if ( s[i] == '1' && s[n-i-1] == '?' && y > 0 )
+                {
+                    y--;
+                    s[n-i-1] = '1';
+                }
+            }
+
+            for ( ll i = 0; i < n; i++ )
+            {
+                if ( i == n-i-1 && s[i] == '?' )
+                {
+                    if ( x )
+                    {
+                        s[i] = '0';
+                        x--;
+                    }
+                    else if ( y )
+                    {
+                        s[i] = '1';
+                        y--;
+                    }
+                    else
+                    {
+                        done = false;
+                        break;
+                    }
+                }
+                else if ( s[i] == '?' && s[n-i-1] == '?' )
+                {
+                    if ( x > 1 )
+                    {
+                        s[i] = '0';
+                        s[n-i-1] = '0';
+                        x -= 2;
+                    }
+                    else if ( y > 1 ) 
+                    {
+                        s[i] = '1';
+                        s[n-i-1] = '1';
+                        y -= 2;
+                    }
+                    else
+                    {
+                        done = false;
+                        break;
+                    }
+                }
+            }
+            s1 = s;
+            reverse(all(s1));
+
+            if ( x == 0 && y == 0 && done && s == s1 )
+                cout << s << endl;
+            else
+            {
+                cout << -1 << endl;
+            }
+        }
+
+    return 0;
+}

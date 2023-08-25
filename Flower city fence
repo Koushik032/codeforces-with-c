@@ -1,0 +1,88 @@
+///   ***   ---   |||         In the name of VOGOBAN        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){     return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+int main()
+{
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int n;
+            cin >> n;
+
+            vi v(n+1);
+            bool done = false;
+
+            for ( int i = 1; i <= n; i++ )
+            {
+                cin >> v[i];
+                if ( v[i] > n )
+                {
+                    done = true;
+                }
+            }
+
+            if ( done )
+            {
+                cout << "NO" << endl;
+            }
+            else
+            {
+                vi ans(n+2,0);
+
+                for ( ll i = n; i >= 1; i-- )
+                {
+                    ans[1]++;
+                    ans[v[i] + 1]--;
+                }
+
+                for ( int i = 1; i <= n; i++ )
+                {
+                    ans[i] += ans[i-1];
+                }
+
+                for ( int i = 1; i <= n; i++ )
+                {
+                    if ( v[i] != ans[i] )
+                    {
+                        done = true;
+                        break;
+                    }
+                }
+
+                if ( done )cout << "NO" << endl;
+                else cout << "YES" << endl;
+            }
+        }
+
+    return 0;
+}

@@ -1,0 +1,164 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+int main() {
+
+    optimize();
+
+    int n, k, a, b;
+    cin >> n >> k >> a >> b;
+    int m = a, o = b;
+
+    string s = "", s1 = "";
+    int mn = min(a, b);
+
+    if ( a < b ){
+        for ( int i = 0; i < mn; i++ )
+        {
+            s += "GB";
+            a--;
+            b--;
+        }
+    }
+    else if ( b < a )
+    {
+        for ( int i = 0; i < mn; i++ )
+        {
+            s += "BG";
+            a--;
+            b--;
+        }
+    }
+    else
+    {
+        for ( int i = 0; i < mn; i++ )
+        {
+            s1 += "BG";
+            a--;
+            b--;
+        }
+    }
+    //cout << s << endl;
+
+    //cout << s << endl;
+    int cnt = 0;
+    int x = k; 
+
+    //cout << a << " " << b << endl;
+    if ( ( m == 0 && o != k ) || (o == 0 && m != k ) )
+    {
+        cout << "NO" << endl;
+    }
+    else{
+        if ( a == 0 && !s.empty() )
+        {
+            for ( int i = 0; i < s.size(); i++ )
+            {
+                if ( s[i] == 'G' )
+                {
+                    while ( x != 0 && b != 0 )
+                    {
+                        s1 += "B";
+                        x--;
+                        b--;
+                    }
+                    s1 += "G";
+                    x = k;
+                }
+                else if ( s[i] == 'B' )
+                {
+                    x--;
+                    s1 += "B";
+                }
+                //cout << s1 << endl;
+            }
+            //cout << x << " " << b << endl;
+
+            if ( b != 0 && x != 0 )
+            {
+                while ( x != 0 )
+                {
+                    s1+= "B";
+                    x--;
+                    b--;
+                }
+            }
+        }
+        else if ( b == 0 && !s.empty() )
+        {
+            for ( int i = 0; i < s.size(); i++ )
+            {
+                if ( s[i] == 'B' )
+                {
+                    while ( x != 0 && a != 0 )
+                    {
+                        s1 += "G";
+                        x--;
+                        a--;
+                    }
+                    s1 += "B";
+                    x = k;
+                }
+                else if ( s[i] == 'G' )
+                {
+                    x--;
+                    s1 += "G";
+                }
+            }
+            if ( a != 0 && x != 0 )
+            {
+                while ( x != 0 )
+                {
+                    s1+= "G";
+                    x--;
+                    a--;
+                }
+            }
+        }
+        else
+        {
+            if ( a != 0 )
+            {
+                while ( a != 0 )
+                {
+                    s1 += "G";
+                    a--;
+                }
+            }
+            else
+            {
+                while ( b != 0 )
+                {
+                    s1 += "B";
+                    b--;
+                }
+            }
+        }
+        if ( a == 0 && b == 0 )
+            cout << s1 << endl;
+        else
+            cout << "NO" << endl;
+    }
+
+    return 0;
+}

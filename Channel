@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+int main() {
+
+    optimize();
+
+    int t;
+    cin >> t;
+
+    while( t-- ){
+        int n, a, q;
+        cin >> n >> a >> q;
+
+        string s;
+        cin >> s;
+        int cur = a;
+
+        int online = a;
+        bool done = false;
+
+        for( int i = 0; i < q; i++ )
+        {
+            if ( online == n )
+            {
+                cout << "YES" << endl;
+                done = true;
+                break;
+            }
+            if ( s[i]== '+')online++, cur++;
+            else online--;
+        }
+
+        if ( !done )
+        {
+            if ( online ==n )cout << "YES" << endl;
+            else if ( cur >= n )cout << "MAYBE" << endl;
+            else
+            {
+                cout << "NO" << endl;
+            }
+        }
+    }
+    return 0;
+}

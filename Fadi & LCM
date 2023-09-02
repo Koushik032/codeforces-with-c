@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main() {
+
+    optimize();
+
+    ll x;
+    cin >> x;
+
+    ll a = 1, b = x;
+
+    for ( ll i = 2; i * i <= x; i++ )
+    {
+        if ( x % i == 0 )
+        {
+            if( lcm(i,x/i) == x)
+            {
+                a = i;
+                b = x/i;
+            }
+        }
+    }
+
+    cout << a << " " << b << endl;
+
+    return 0;
+}

@@ -1,0 +1,82 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll const N = 1e5 + 123;
+vector<int> graph[N];
+
+int main() {
+
+    optimize();
+
+    int t;
+    cin >> t;
+
+    for ( int tc = 1; tc <= t; tc++ )
+    {
+
+        memset(graph, 0, sizeof(graph));
+
+        int node, edge;
+        cin >> node >> edge;
+
+        for ( int i = 0 ; i < edge; i++ )
+        {
+            int e1, e2;
+            cin >> e1 >> e2;
+
+            graph[e1].PB(e2);
+            graph[e2].PB(e1);
+        }
+
+        int leaf_node = 0;
+
+        for ( int i = 1; i < N; i++ )
+        {
+            if ( graph[i].size() == 1 )
+            {
+                leaf_node = graph[i][0];
+                break;
+            }
+        }
+
+        //cout << leaf_node << endl;
+
+        int mid_node = 0;
+
+        for ( int i = 0; i < graph[leaf_node].size(); i++ )
+        {
+            if ( graph[graph[leaf_node][i]].size() > 1 )
+            {
+                mid_node = graph[leaf_node][i];
+                break;
+            }
+        }
+
+        //cout << mid_node << endl;
+
+        cout << graph[mid_node].size() << " " << graph[leaf_node].size()-1 << endl;
+    }
+
+
+
+    return 0;
+}

@@ -1,0 +1,85 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+const int N = 1e3 + 123;
+int graph[N][N];
+int ans = 0;
+
+void DFS( int i, int j, int n, int m )
+{
+    if ( i < 0 || j < 0 || i >= n || j >= m )return;
+    if ( graph[i][j] == 0 )return;
+
+    ans += graph[i][j];
+    graph[i][j] = 0;
+
+    DFS(i, j+1, n, m);
+    DFS(i, j-1, n, m);
+    DFS(i-1, j, n, m);
+    DFS(i+1, j, n, m);
+}
+
+int main() {
+
+    optimize();
+    
+    int t;
+    cin >> t;
+
+    while ( t-- )
+    {
+        int n, m;
+        cin >> n >> m;
+
+        for ( int i = 0; i < n; i++ )
+        {
+            for( int j = 0; j < m; j++ )
+            {
+                int a;
+                cin >> a;
+                graph[i][j] = a;
+            }
+        }
+
+        int ans1 = 0;
+        for ( int i = 0; i < n; i++ )
+        {
+            for ( int j = 0; j < m; j++ )
+            {
+                if ( graph[i][j] != 0 )
+                {
+                    DFS( i, j, n, m);
+                    ans1 = max(ans1, ans);
+                    ans = 0;
+                }
+            }
+        }
+
+        cout << ans1 << endl;
+
+        memset(graph, 0, sizeof(graph));
+        ans = 0;
+
+    }
+
+    return 0;
+}

@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main() {
+
+    optimize();
+    
+    string s;
+    cin >> s;
+    int mn = INT_MAX;
+
+    for ( int i = 0; i <= 9; i++ )
+    {
+        for ( int j = 0; j <= 9; j++ )
+        {
+            for ( int k = 0; k <= 9; k++ )
+            {
+                for ( int l = 0; l <= 9; l++ )
+                {
+                    for ( int m = 0; m <= 9; m++ )
+                    {
+                        for ( int n = 0; n <= 9; n++ )
+                        {
+                            int dif = ((s[0] - '0' != i)) + ((s[1] - '0' != j)) + ((s[2] - '0' != k)) + ((s[3] - '0' != l)) + ((s[4] - '0' != m)) + ((s[5] - '0' != n));
+
+                            if ( i +j + k == l+ m + n)
+                            {
+                                mn = min(mn, dif);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    cout << mn << endl;
+
+    return 0;
+}

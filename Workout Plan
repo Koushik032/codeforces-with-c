@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main() {
+
+    optimize();
+    
+    ll n, k;
+    cin >> n >> k;
+
+    vl v(n);
+
+    for ( auto &u : v)cin >> u;
+
+    ll boost;
+    cin >> boost;
+
+    priority_queue<ll, vector<ll>, greater<ll> >pq;
+    
+    ll ans = 0;
+    bool done = true;
+
+    for ( ll i = 0; i < n; i++ )
+    {
+        int x;
+        cin >> x;
+        pq.push(x);
+
+        if ( k < v[i] && done )
+        {
+            while ( !pq.empty() && k < v[i] )
+            {
+                ans += pq.top();
+                pq.pop();
+                k += boost;
+            }
+            if ( k < v[i])
+            {
+                done = false;
+            }
+        }
+    }
+    if ( done )
+        cout << ans << endl;
+    else cout << -1 << endl;
+
+    return 0;
+}

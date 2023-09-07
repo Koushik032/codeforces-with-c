@@ -1,0 +1,100 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+const int mx = 1e7+123;
+bitset<mx> isPrime;
+ 
+void primeGen ( int n )
+{
+    for ( int i = 3; i <= n; i += 2 ) isPrime[i] = 1;
+ 
+    int sq = sqrt(n);
+    for ( int i = 3; i <= sq; i += 2 ) {
+        if(isPrime[i]) {
+            for ( int j = i*i; j <= n; j += i ) {
+                isPrime[j] = 0;
+            }
+        }
+    }
+    isPrime[1] = 1;
+    isPrime[2] = 1;
+}
+
+int main() {
+
+    optimize();
+    
+    int t;
+    cin >> t;
+    int lim = 1e7 + 123;
+    primeGen(lim);
+
+    while ( t-- )
+    {
+        ll a, b;
+        cin >> a >> b;
+
+        if ( a == b && isPrime[a] )
+        {
+            cout << -1 << endl;
+        }
+        else if ( a % 2 == 0 && a != 2 )
+        {
+            cout << a/2 << " " << a/2 << endl;
+        }
+        else if ( b % 2 == 0 && b != 2)
+        {
+            cout << b/2 << " " << b/2 << endl;
+        }
+        else if ( (a + 1) % 2 == 0 && (a + 1) != 2 && (b >= (a+1)))
+        {
+            cout << (a+1)/2 << " " << (a+1)/2 << endl;
+        }
+        else if ( (b - 1) % 2 == 0 && b - 1 != 2 && a <= (b-1))
+        {
+            cout << (b-1)/2 << " " << (b-1)/2 << endl;
+        }
+        else if ( a == b && !isPrime[a] )
+        {
+            ll z = 0;
+            for ( int i = 2; i*i <= a; i++ )
+            {
+                if ( a % i == 0)
+                {
+                    z = i;
+                    break;
+                }
+            }
+            cout << z << " " << a-z << endl;
+        }
+        else
+        {
+            cout << -1 << endl;
+        }
+
+    }
+
+    return 0;
+}

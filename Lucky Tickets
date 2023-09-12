@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define all(v) v.begin(),v.end()
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    vector<int> v(3);
+
+    while ( n-- )
+    {
+        int a;
+        cin >> a;
+        v[a % 3]++;
+    }
+
+    cout << v[0]/2 + min(v[1], v[2]) << endl;
+}
+

@@ -1,0 +1,108 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int main() {
+
+    optimize();
+
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int k, n;
+            cin >> k >> n;
+
+            int sum = 0;
+
+            for ( int i = 1; i <= k-1; i++ )
+            {
+                sum += i;
+            }
+            //cout << sum << endl;
+            int cnt = 0, sum1 = 0;
+                for ( int i = 1; i <= k-1; i++ )
+                {
+                    sum1 += i;
+                    if ( sum1 <= n )
+                    {
+                        cnt++;
+                        sum1 += i;
+                    }
+                }
+                //cout << cnt << endl;
+
+            if ( sum + 1 + (n-cnt) < n )
+            {   int a = 1;
+                for ( int i = 0; i < k; i++ )
+                {
+                    a += i;
+                    cout << a << " ";
+                }
+                cout << endl;
+            }
+            else if ( n == k )
+            {
+                int a = 0;
+                for ( int i = 0; i < k; i++ )
+                {
+                    a += 1;
+                    cout << a << " ";
+                }cout << endl;
+            }
+            else
+            {
+                int a = 1, sum0 = k, cnt1 =0;
+
+                for ( int i = 2; i < k; i++ )
+                {
+                    sum0 -= 1;
+                    sum0 += i;
+                    if ( sum0 <= n )
+                    {
+                        cnt1++;
+                    }
+                }
+                //cout << cnt1 << endl;
+                cout << a << " ";
+
+                for ( int i = 1; i < k; i++ )
+                {
+                    if( cnt1+1 != 0 )
+                    {
+                        a += i;
+                        cout << a << " ";
+                        cnt1--;
+                    }
+                    else
+                    {
+                        a = a + 1;
+                        cout << a << " ";
+                    }
+                }
+                cout << endl;
+            }
+
+        }
+
+    return 0;
+}

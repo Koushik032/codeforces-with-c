@@ -1,0 +1,90 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+int main() {
+
+    optimize();
+
+                int n, k;
+                cin >> n >> k;
+
+                string s;
+                cin >> s;
+
+                int cnt = 0;
+                bool flag = false;
+
+                if ( n == 1 && k == 1 )
+                {
+                    cout << 0 << endl;
+                }
+                else
+                {
+                    if ( s.size() == k )flag = true;
+                    else{
+                        for ( int i = k; i < n; i++ )
+                        {
+                            if ( s[i] != '0' )
+                            {
+                                flag = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if ( flag )
+                    {
+                        if ( cnt < k )
+                        {
+                            if ( s[0] != '1' )s[0] = '1', cnt++;
+                            for ( int i = 1; i < n; i++ )
+                            {
+                                if ( cnt == k )break;
+                                else if ( s[i] == '0' )continue;
+                                else
+                                {
+                                    s[i] = '0';
+                                    cnt++;
+                                }
+
+                                //if ( cnt == k )break;
+                            }
+
+                        cout << s << endl;
+                        }
+                        else
+                        {
+                            cout << s << endl;
+                        }
+                    }
+                    else
+                    {
+                        for ( int i = 0; i < n; i++ )
+                        {
+                            cout << 0;
+                        }
+                        cout << endl;
+                    }
+                }   
+    return 0;
+}

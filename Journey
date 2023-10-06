@@ -1,0 +1,73 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+#define fraction(a) fixed << setprecision(a)
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+const int N = 1e6 + 123;
+vector<int> graph[N];
+vector<double> depth(N, 0.0), ans(N, 0.0);
+bool vis[N];
+
+void DFS( int vertex  )
+{
+    vis[vertex] = true;
+    double cnt = 0;
+    bool flag = false;
+    for ( auto u : graph[vertex] )
+    {
+        if ( vis[u] )continue;
+        cnt++;
+        DFS( u );
+        ans[vertex] += ans[u];
+        flag = true;
+    }
+
+    //cout << cnt << endl;
+    if( flag )ans[vertex] = (ans[vertex]/cnt) + 1;
+}
+
+int main() {
+
+    optimize();
+    
+    int t = 1;
+    //cin >> t;
+
+    while ( t-- )
+    {
+        int n;
+        cin >> n;
+
+        for ( int i = 1; i < n; i++ )
+        {
+            int v1, v2;
+            cin >> v1 >> v2;
+
+            graph[v1].PB(v2);
+            graph[v2].PB(v1);
+        }
+
+        DFS( 1 );
+
+       cout << fraction(7) << ans[1] << endl;
+    }
+    return 0;
+}

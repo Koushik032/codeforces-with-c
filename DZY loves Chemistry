@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+const int N = 1e5 + 123;
+vector<int> graph[N];
+bool vis[N];
+
+void DFS( int vertex )
+{
+    vis[vertex] = true;
+
+    for ( auto u : graph[vertex] )
+    {
+        if ( vis[u] )continue;
+
+        vis[u] = true;
+        DFS(u);
+    }
+}
+
+int main() {
+
+    optimize();
+        
+        int node, edges;
+        cin >> node >> edges;
+
+        for ( int i = 0; i < edges; i++ )
+        {
+            int v1, v2;
+            cin >> v1 >> v2;
+
+            graph[v1].PB(v2);
+            graph[v2].PB(v1);
+        }
+
+        int c_c = 0;
+
+        for ( int i = 1; i <= node; i++ )
+        {
+            if( !vis[i] )
+            {
+                c_c++;
+                DFS(i);
+            }
+        }
+
+        ll ans = pow(  2, node-c_c);
+        cout << ans << endl;
+
+    return 0;
+}

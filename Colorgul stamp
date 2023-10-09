@@ -1,0 +1,89 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int main()
+{
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            int n;
+            cin >> n;
+
+            string s;
+            cin >> s;
+
+            int cntW = 0,cntB = 0,cntR = 0;
+
+            for ( int i =0; i < n; i++ )
+            {
+                if ( s[i] == 'W' )cntW++;
+            }
+
+            if ( n == 1 && (s[0] != 'W'))
+            {
+                cout << "NO" << endl;
+            }
+            else if ( cntW == n  )
+            {
+                cout << "YES" << endl;
+            }
+            else if ( n == 2 && ( s[0] == 'W' || s[1] == 'W') )
+            {
+                cout << "NO" << endl;
+            }
+            else
+            {
+                int cntb = 0, cntr = 0;
+                bool flag = false;
+
+                for ( int i = 0; i < n; i++ )
+                {
+                    if ( s[i] == 'W' && i == 0 )continue;
+                    else if ( s[i] == 'B' )cntb++;
+                    else if ( s[i] == 'R' )cntr++;
+                    else
+                    {
+                        if ( (cntb > 0 && cntr > 0)|| (cntb == 0 && cntr == 0) )
+                        {
+                            cntb = 0, cntr = 0;
+                        }
+                        else
+                        {
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                
+                if ( flag || (cntr > 0 && cntb == 0) || (cntb > 0 && cntr == 0))cout << "NO" << endl;
+                    else cout << "YES" << endl;
+            }
+        }
+
+   return 0;
+}

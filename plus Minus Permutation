@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main() {
+
+    optimize();
+
+    ll t = 1;
+    cin >> t;
+        
+        while ( t-- )
+        {
+            ll n, x, y;
+            cin >> n >> x >> y;
+
+            ll lcm1 = ceil(n/(lcm(x,y)));
+
+            ll num_x = (n / x) - lcm1;
+            ll num_y = (n / y) - lcm1;
+
+            //cout << num_x << " " << num_y << endl;
+
+            num_y = (num_y*(num_y+1))/2;
+
+            num_x = ((n*(n+1))/2) - ((( n - num_x )*((n - num_x)+1))/2);
+
+            cout << num_x - num_y << endl;
+        }
+    return 0;
+}

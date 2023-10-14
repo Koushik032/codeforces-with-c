@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int main()
+{
+        int n, k;
+        cin >> n >> k;
+
+        vi v( n), v1(k);
+
+        for ( auto &u: v)cin >> u;
+        for ( auto &u : v1)cin >> u;
+
+        int cnt = 0, sam = 0, pos = 0;
+        bool done = false;
+
+        sort(all(v1));
+
+        int j = k-1;
+        for ( int i = 0; i < n; i++ )
+        {
+            if ( v[i] == 0 )
+            {
+                v[i] = v1[j];
+                j--;
+            }
+        }
+
+        for ( int i = 0; i < n-1; i++ )
+        {
+            if ( v[i] > v[i+1] )
+            {
+                done = true;
+                break;
+            }
+        }
+
+            if ( done )cout << "YES" << endl;
+            else cout << "NO" << endl;
+
+    return 0;
+}

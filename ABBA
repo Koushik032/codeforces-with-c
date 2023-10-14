@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int main()
+{
+        int t;
+        cin >> t;
+
+        while ( t-- )
+        {
+            string s;
+            cin >> s;
+
+            string s1 = "";
+            int i = 0;
+
+            while ( i < s.size() )
+            {
+                //cout << s[i] << endl;
+                if ( s1.size() < 2 )
+                {
+                    s1 += s[i];
+                    i++;
+                }
+                else if ( (s1[s1.size() - 1] == 'B' && s1[s1.size() - 2] == 'A') || (s1[s1.size() - 1] == 'B' && s1[s1.size() - 2] == 'B' ))
+                {
+                    s1.pop_back();
+                    s1.pop_back();
+                }
+                else
+                {
+                    s1 += s[i];
+                    i++;
+                }
+                //cout << s1 << endl;
+            }
+            if ( (s1[s1.size() - 1] == 'B' && s1[s1.size() - 2] == 'A') || (s1[s1.size() - 1] == 'B' && s1[s1.size() - 2] == 'B' ))
+            {
+                s1.pop_back();
+                s1.pop_back();
+            }
+
+            cout << s1.size() << endl;
+        }
+    return 0;
+}

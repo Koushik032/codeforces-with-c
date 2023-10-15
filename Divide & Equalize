@@ -1,0 +1,77 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int main()
+{
+    int t;
+    cin >> t;
+
+    while (t-- )
+    {
+        int n;
+        cin >> n;
+
+        vi v(n);
+        map<int,int> mp;
+
+        for ( auto &u : v)
+        {
+            cin >> u;
+
+            int i = 2;
+
+            while ( i * i <= u )
+            {
+                while ( u % i == 0 )
+                {
+                    mp[i]++;
+                    u/= i;
+                }
+                i++;
+            }
+
+            if ( u > 1 )mp[u]++;
+        }
+
+        bool done = false;
+
+        for ( auto u : mp )
+        {
+            if ( u.S % n != 0 )
+            {
+                done = true;
+                break;
+            }
+        }
+
+
+        if ( done )cout << "NO" << endl;
+        else cout << "YES" << endl;
+    }
+
+    return 0;
+}

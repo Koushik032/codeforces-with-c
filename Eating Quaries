@@ -1,0 +1,93 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+vector<int> prefix_sum( int n, vector<int> &v )
+{
+    vector<int> pr_sum(n+1);
+    for ( int i = 1; i <= n; i++ )
+    {
+        pr_sum[i] = pr_sum[i-1] + v[i-1];
+    }
+
+    return pr_sum;
+}
+
+int main()
+{
+    
+    int t;
+    cin >> t;
+
+    while ( t-- )
+    {
+        int n, k;
+        cin >> n >> k;
+
+        vi v( n+1);
+
+        for ( int i = 1; i <= n; i++ )
+        {
+            cin >> v[i];
+        }
+
+        sort( all(v), greater<int>());
+
+        vector<int> pre_sum = prefix_sum(n, v);
+
+        // for ( auto u : pre_sum )cout << u << " ";
+        //     cout << endl;
+
+        while( k-- )
+        {
+            int x;
+            cin >> x;
+
+            int l = 0, r = n+1,mid, ans = 0;
+
+            while ( l < r )
+            {
+                mid = (l+r)/2;
+
+                if ( pre_sum[mid] >= x )
+                {
+                    r = mid;
+                    ans = mid;
+                }
+                else
+                {
+                    l = mid +1;
+                }
+
+                //cout << pre_sum[mid] << endl;
+            }
+
+            if ( ans == 0 )cout << -1 << endl;
+            else
+                cout << ans << endl;
+            //break; 
+        }
+    }
+
+    return 0;
+}

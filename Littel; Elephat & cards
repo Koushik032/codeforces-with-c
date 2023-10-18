@@ -1,0 +1,103 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int main()
+{
+
+        int n;
+        cin >> n;
+
+        vector<pair<int,int>> pa;
+        map<int,int>mp, mp1;
+
+        for ( int i = 0; i < n; i++ )
+        {
+            int a, b;
+            cin >> a >> b;
+            pa.PB({a, b});
+            mp[a]++;
+
+            if ( a == b )
+            {
+                mp1[a]++;
+            }
+            else
+            {
+                mp1[a]++;
+                mp1[b]++;
+            }
+        }
+
+        bool flag = false;
+
+        //for ( auto u : mp1)cout << u.F << " " << u.S << endl;
+
+        //cout << ceil((double)n/2) << endl;
+
+        for ( auto u : mp )
+        {
+            if ( u.S >= ceil((double)n/2) )
+            {
+                flag = true;
+                break;
+            }
+        }
+        //cout << flag << endl;
+
+        vector<int> v;
+
+        int cnt = 0;
+        bool flag1 = false;
+
+        for ( auto u : mp1 )
+        {
+            if ( u.S >= ceil((double)n/2) )
+            {
+                flag1 = true;
+                v.PB(u.F);
+            }
+        }
+        //cout << flag1 << endl;
+
+        //for ( auto u : v)cout << u << endl;
+
+        int ans1 = INT_MAX;
+
+        if ( flag )cout << 0 << endl;
+        else if ( !flag1 )cout << -1 << endl;
+        else{
+            for ( int i = 0; i < v.size(); i++ )
+            {
+                int x = ceil((double)n/2) - mp[v[i]];
+                ans1 = min(x,ans1);
+                //cout << ans1 << endl;
+            }
+            cout << ans1 << endl;
+        }
+
+    return 0;
+}

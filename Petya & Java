@@ -1,0 +1,192 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+bool arr[21];
+
+int main()
+{
+        string s;
+        cin >> s;
+
+        string byte = "127", shor = "32767", in = "2147483647", lon = "9223372036854775807";
+
+        if ( s.size() < 3 )cout << "byte" << endl;
+        else if ( s.size() == 3 && s[0] == '-' )
+        {
+            cout << "byte" << endl;
+        }
+        else if ( (s.size() == 4 && s[0] == '-' ) || (s.size() == 3 ) )
+        {
+            bool flag = false;
+            int j = 0;
+
+            for ( int i = 0; i < s.size(); i++ )
+            {
+                if ( s[i] == '-' )
+                {
+                    byte = "128";
+                }
+                else
+                {
+                    if ( (s[i] - '0') == ( byte[j] - '0') )
+                    {
+                        j++;
+                        continue;
+                    }
+                    else if ( (s[i] - '0') < ( byte[j] - '0') )
+                    {
+                        break;
+                        j++;
+                    }
+                    else
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+
+            if ( flag )cout << "short" << endl;
+            else cout << "byte" << endl;
+        }
+        else if ( s.size() == 4 || (s.size() == 5 && s[0] == '-' ))
+        {
+            cout << "short" << endl;
+        }
+        else if ( s.size() == 5 || ( s.size() == 6 && s[0] == '-' ) )
+        {
+            bool flag = false;
+            int j = 0;
+
+            for ( int i = 0; i < s.size(); i++ )
+            {
+                if ( s[i] == '-' )
+                {
+                    shor = "32768";
+                }
+                else
+                {
+                    if ( (s[i] - '0') == ( shor[j] - '0') )
+                    {
+                        j++;
+                        continue;
+                    }
+                    else if ( (s[i] - '0') < ( shor[j] - '0') )
+                    {
+                        break;
+                        j++;
+                    }
+                    else
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+
+            if ( flag )cout << "int" << endl;
+            else cout << "short" << endl;
+        }
+        else if ( s.size() <= 9 || ( s.size() == 10 && s[0] == '-'))
+        {
+            cout << "int" << endl;
+        }
+        else if ( s.size() == 10 || ( s.size() == 11 && s[0] == '-' ) )
+        {
+            bool flag = false;
+            int j = 0;
+
+            for ( int i = 0; i < s.size(); i++ )
+            {
+                if ( s[i] == '-' )
+                {
+                    in = "2147483648";
+                }
+                else
+                {
+                    if ( (s[i] - '0') == ( in[j] - '0') )
+                    {
+                        j++;
+                        continue;
+                    }
+                    else if ( (s[i] - '0') < ( in[j] - '0') )
+                    {
+                        break;
+                        j++;
+                    }
+                    else
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+
+            if ( flag )cout << "long" << endl;
+            else cout << "int" << endl;
+        }
+        else if ( s.size() <= 18 || ( s.size() == 19 && s[0] == '-' ))
+        {
+            cout << "long" << endl;
+        }
+        else if ( s.size() == 19 || ( s.size() == 20 && s[0] == '-' ))
+        {
+            bool flag = false;
+            int j = 0;
+
+            for ( int i = 0; i < s.size(); i++ )
+            {
+                if ( s[i] == '-' )
+                {
+                    lon = "9223372036854775808";
+                }
+                else
+                {
+                    if ( (s[i] - '0') == ( lon[j] - '0') )
+                    {
+                        j++;
+                        continue;
+                    }
+                    else if ( (s[i] - '0') < ( lon[j] - '0') )
+                    {
+                        break;
+                        j++;
+                    }
+                    else
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+
+            if ( flag )cout << "BigInteger" << endl;
+            else cout << "long" << endl;
+        }
+        else
+            cout << "BigInteger" << endl;
+
+    return 0;
+}

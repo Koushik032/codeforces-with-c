@@ -1,0 +1,87 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main()
+{
+        int n, m;
+        cin >> n >> m;
+
+        char arr[n][m];
+
+        for( int i = 0; i < n; i++ )
+        {
+            for ( int j = 0; j < m; j++ )
+            {
+                cin >> arr[i][j];
+            }
+        }
+
+        string s = "";
+
+        for ( int row = 0; row < n; row++ )
+        {
+            for ( int col = 0; col < m; col++ )
+            {
+                char c = arr[row][col];
+                bool flag = false;
+
+                for ( int col1 = 0; col1 < m; col1++ )
+                {
+                    if ( arr[row][col1] == c && col1 != col )
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+                if ( !flag )
+                {
+                    for ( int row1 = 0; row1 < n; row1++ )
+                {
+                    if ( arr[row1][col] == c && row1 != row )
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+                }
+
+                if ( !flag )
+                {
+                    s += arr[row][col];
+                }
+                else
+                {
+                    flag = false;
+                }
+                //cout << s << endl;
+            }
+
+        }
+
+        cout << s << endl;
+
+
+    return 0;
+}

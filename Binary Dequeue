@@ -1,0 +1,69 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int main()
+{
+
+    int t;
+    cin >> t;
+
+    while ( t-- )
+    {
+        int n, s;
+        cin >> n >> s;
+
+        vi arr(n+1);
+        int sum = 0;
+
+        for ( int i = 1; i <= n; i++ )
+        {
+            int u;
+            cin >> u;
+            arr[i] = u;
+            sum += u;
+        }
+
+        if(sum<s)
+        {
+            cout<<"-1"<<endl;
+        }
+        else{
+            int l = 1,r = 1,mx = 0,cur = 0;
+            while(r<=n){
+                cur+=arr[r];
+                while(cur>s){
+                    cur-=arr[l];
+                    l++;
+                }
+                mx=max(mx,(r-l)+1);
+                r++;
+            }
+            cout<<n-mx<<endl;
+        }
+    }
+
+    return 0;
+}

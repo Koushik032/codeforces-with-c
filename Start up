@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int main()
+{
+
+    int t = 1;
+    //cin >> t;
+
+    while ( t-- )
+    {
+        string s, s1;
+        cin >> s;
+
+        s1 = s;
+        bool flag = true;
+
+        for ( int i = 0; i < s.size(); i++ )
+        {
+            if ( s[i] != 'A' && s[i] != 'H' && s[i] != 'I' && s[i] != 'M' && s[i] != 'O' && s[i] != 'T' && s[i] != 'U' && s[i] != 'V' && s[i] != 'W' && s[i] != 'X' && s[i] != 'Y' )
+            {
+                flag = false;
+                break;
+            }
+        }
+
+        if ( flag )
+        {
+            reverse(all(s1));
+            if ( s1 == s )cout << "YES" << endl;
+            else cout << "NO" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
+    }
+
+    return 0;
+}

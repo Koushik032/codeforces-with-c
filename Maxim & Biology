@@ -1,0 +1,107 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){     return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+int main() {
+    
+
+        int t = 1;
+        //cin  >> t;
+
+        while( t-- )
+        {
+            
+            int n;
+            cin >> n;
+
+            string s, s1 = "ACTG";
+            cin >> s;
+            int ans = 0, op = 0, maans = INT_MAX;
+
+            for ( int i = 0; i < n; i++ )
+            {
+                if( i + 3 < n )
+                {
+                    int k = 0;
+                    for( int j = i; j < i + 4; j++ )
+                    {
+                        if( s[j] > s1[k] && k == 0 )
+                        {
+                            int x = ('Z' - 'A' ) - (s[j] - 'A') + 1;
+                            int y = (s[j] - 'A') - ('A' -'A');
+                            ans = min(x, y);
+                        }
+                        else if ( s[j] < s1[k] && k == 1 )
+                        {
+                            int x = ('C' - 'A') - (s[j] - 'A');
+                            ans = x;
+                            //cout << ans << endl;
+                        }
+                        else if( s[j] > s1[k] && k == 1 )
+                        {
+                            int x = ('Z' - 'A' ) - (s[j] - 'A') + 3;
+                            int y = (s[j] - 'A') - ('C' - 'A');
+                            ans = min(x, y);
+                            //cout << ans << endl;
+                        }
+                        else if ( s[j] < s1[k] && k == 2 )
+                        {
+                            int x = ((s[j] - 'A') - ('A' - 'A') + 1) + (('Z' - 'A') - (s1[k] - 'A') );
+                            int y = ('T' - 'A') - (s[j] - 'A');
+                            ans = min(x,y);
+                        }
+                        else if ( s[j] > s1[k] && k == 2 )
+                        {
+                            ans = (s[j] - 'A') - ('T' - 'A');
+                        }
+                        else if ( s[j] > s1[k] && k == 3 )
+                        {
+                            int x = (s[j] - 'A') - ('G' - 'A');
+                            int y = (('Z' - 'A') - (s[j] - 'A')) + 1 + (('G' - 'A') - ('A' - 'A'));
+                            ans = min(x, y);
+                            //cout << ans << endl;
+                        }
+                        else if ( s[j] < s1[k] && k == 3 )
+                        {
+                            ans = ('G' - 'A') - (s[j] - 'A');
+                        }
+                        k++;
+                        op += ans;
+                        //cout << ans << endl;
+                        ans = 0;
+
+                    }
+                    //cout << "FIRST" << op << endl;
+                    maans = min(maans, op);
+                    //ans = 0;
+                    op = 0;
+                }
+            }
+
+            cout << maans << endl;
+        }
+    return 0;
+}

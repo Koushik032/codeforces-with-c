@@ -1,0 +1,97 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){     return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+int main() {
+    
+
+        int t = 1;
+        cin  >> t;
+
+        while( t-- )
+        {
+            int n;
+            cin >> n;
+
+            vi v(n+1), ans(n+1);
+            map<int,int> mp;
+
+            for( int i = 0; i < n; i++ )
+            {
+                int a;
+                cin >> a;
+                v[i+1] = a;
+            }
+
+            //for( auto u : v)cout << u << endl;
+
+            for( int i = 1; i <= n; i++ )
+            {
+                if( v[i-1] < v[i] )
+                {
+                    ans[i] = v[i];
+                    mp[v[i]]++;
+                }
+            }
+
+            //for( auto u : ans )cout << u << " ";
+                //cout << endl;
+            int at = 1;
+            for( int i = 1; i <= n; i++ )
+            {
+                if( ans[i] == 0 )
+                {
+                    while( mp[at] )at++;
+                    ans[i] = at;
+                    at++;
+                }
+            }
+
+            bool flag = true;
+            int temp = 0;
+
+            for( int i = 0; i <= n; i++ )
+            {
+                temp = max(temp, ans[i]);
+                if( v[i] == temp )continue;
+                flag = false;
+                break;
+            }
+
+            if( flag )
+            {
+                for( int i = 1; i <= n; i++ )
+                {
+                    cout << ans[i] << " ";
+                }
+                cout << endl;
+            }
+            else
+            {
+                cout << -1 << endl;
+            }
+        }
+    return 0;
+}

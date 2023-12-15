@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+void solve(int cs){
+    ll n, l , t, p;
+    cin >> n >> p >> l >> t;
+
+    ll week = 1 + ((n-1)/7);
+
+    ll way = ( t + t + l);
+
+    ll x = ( p + (way-1))/way;
+
+    if( x <= (week/2))
+    {
+        cout << n - x << endl;
+        return;
+    }
+
+    ll ans = (week / 2);
+    p -= (ans * way);
+
+    if( week & 1 )
+    {
+        ans++;
+        p -= ( t + l);
+    }
+
+    if( p <= 0 )
+    {
+        cout << n - ans << endl;
+        return;
+    }
+        ans += (p + (l-1))/l;
+        cout << n - ans << endl;
+        return;
+}
+   
+int main()
+{
+    int t=1,cs=0;
+    cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+ 
+    return 0;
+}

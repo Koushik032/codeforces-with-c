@@ -1,0 +1,95 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+void solve(int cs){
+    string s;
+    cin >> s;
+
+    string fi = "", la = "";
+    fi += s[0];
+    bool flag = false;
+    for( int i = 1; i < s.size(); i++ )
+    {
+        if( s[i] != '0' )
+        {
+            flag = true;
+            la += s[i];
+        }
+        else if( flag )
+        {
+            la += s[i];
+        }
+        else
+        {
+            fi += s[i];
+        }
+    }
+    //cout << fi << " " << la << endl;
+
+    if( fi.size() < la.size() )cout << fi << " " << la << endl;
+    else if( fi.size() == la.size() )
+    {
+        if( fi[0] - '0' < la[0] - '0' )
+        {
+            cout << fi << " " << la << endl;
+        }
+        else
+        {
+            for( int i = 0; i < fi.size(); i++ )
+            {
+                if( fi[i] - '0' > la[i]-'0' )
+                {
+                    cout << -1 << endl;
+                    return;
+                }
+                if( fi[i] - '0' < la[i] - '0' )
+                {
+                    cout << fi << " " << la << endl;
+                    return;
+                }
+            }
+            cout << -1 << endl;
+        }
+    }
+    else
+    {
+        cout << -1 << endl;
+    }
+    
+}
+   
+int main()
+{
+    int t=1,cs=0;
+    cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+ 
+    return 0;
+}

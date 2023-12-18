@@ -1,0 +1,75 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+void solve(int cs){
+    int q;
+    cin >> q;
+
+    vector<int> power(30), value(30);
+
+    for( int i = 0; i < 30; i++ )
+    {
+        power[i] = 1 << i;
+    }
+
+    while( q-- )
+    {
+        int t, v;
+        cin >> t >> v;
+
+        if( t == 1 )
+        {
+            value[v]++;
+        }
+        else
+        {
+            for( int i = 29; i >= 0; i-- )
+            {
+                int x = v / power[i];
+                //cout << v << " " << power[i] << endl;
+                v -= min(value[i],x) * power[i];
+                //cout << x << " " << v << endl;
+            }
+
+            if( v == 0 )cout << "YES" << endl;
+            else cout << "NO" << endl;
+        }
+    }    
+
+}
+   
+int main()
+{
+    int t=1,cs=0;
+    //cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+ 
+    return 0;
+}

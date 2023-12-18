@@ -1,0 +1,85 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+void solve(int cs){
+    string s;
+    cin >> s;
+
+    string s1 = s;
+
+    int zero = 0, one = 0;
+
+    for( int i = 0; i < s.size(); i++ )
+    {
+        if( s[i] == '0' )zero++;
+        else one++;
+    }
+    
+    for( int i = 0; i < s.size(); i++ )
+    {
+        if( s[i] == '0' && one != 0 )
+        {
+            s[i] = '1';
+            one--;
+        }
+        else if( s[i] == '1' && zero != 0 )
+        {
+            s[i] = '0';
+            zero--;
+        }
+    }
+    int ans = 0, j = 0;
+
+    for( int i = 0; i < s.size(); i++ )
+    {
+        if( s[i] == s1[j] )
+        {
+            ans++;
+        }
+        else
+        {
+            j++;
+        }
+    }
+
+    cout << ans << endl;
+
+    //cout << s << " " << s1 << endl;
+
+}
+   
+int main()
+{
+    int t=1,cs=0;
+    cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+ 
+    return 0;
+}

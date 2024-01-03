@@ -1,0 +1,88 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+void solve(int cs){
+    int n;
+    cin >> n;
+
+    vector< pair<int,int >> fi(n), se(n), th(n);
+
+    for( int i = 1; i <= n; i++ )
+    {
+        int a;
+        cin >> a;
+        fi.PB({a,i});
+    }
+    for( int i = 1; i <= n; i++ )
+    {
+        int a;
+        cin >> a;
+        se.PB({a,i});
+    }
+    for( int i = 1; i <= n; i++ )
+    {
+        int a;
+        cin >> a;
+        th.PB({a,i});
+    }
+
+    sort(all(fi), greater<pair<int,int>>());
+    sort(all(se), greater<pair<int,int>>());
+    sort(all(th), greater<pair<int,int>>());
+    int ans = 0;
+
+    for( int i = 0; i < 3; i++ )
+    {
+        for( int j = 0; j < 3; j++ )
+        {
+            for( int k = 0; k < 3; k++ )
+            {
+                if( (fi[i].S != se[j].S ) && ( fi[i].S != th[k].S ) && ( se[j].S != th[k].S ) )
+                {
+                    ans = max(ans, (fi[i].F + se[j].F + th[k].F));
+                }
+            }
+        }
+    }
+
+    cout << ans << endl;
+
+
+
+}
+   
+int main()
+{
+    int t = 1,cs = 0;
+    cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+ 
+    return 0;
+} 

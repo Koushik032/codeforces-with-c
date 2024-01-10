@@ -1,0 +1,76 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+void solve(int cs)
+{
+    int n;
+    cin >> n;
+
+    vl v(n), v1(n);
+
+    for( auto &u : v)cin >> u;
+    for( auto &u : v1)cin >> u;
+
+    vector<pair<ll,ll>> val;
+
+    for( int i = 0; i < n; i++ )
+    {
+        val.PB({v[i]+v1[i],i});
+    }
+    ll ans = 0;
+
+    sort(all(val),greater<pair<int,int>>());
+
+    //for( auto u : val )cout << u.F << " " << u.S << endl;
+
+    for( int i = 0; i < n; i++ )
+    {
+        ll j = val[i].S;
+        if( i % 2 == 0 )
+        {
+            ans += (v[j] - 1);
+        }
+        else
+        {
+            ans -=  (v1[j] - 1);
+        }
+    }
+
+    cout << ans << endl;
+}
+   
+int main()
+{
+    int t = 1,cs = 0;
+    cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+ 
+    return 0;
+} 

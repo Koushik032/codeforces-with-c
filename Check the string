@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+void solve(int cs)
+{
+    string s, s1;
+    cin >> s;
+    s1 = s;
+
+    sort(all(s1));
+
+    int a = 0, b = 0, c = 0;
+
+    for( int i = 0; i < s.size(); i++ )
+    {
+        if( s[i] == s1[i] )
+        {
+            if( s[i] == 'a' )a++;
+            else if( s[i] == 'b' )b++;
+            else c++;
+        }
+        else
+        {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+
+    if( s[0] == 'a' && (a == c || b == c) && a > 0 && b > 0 )cout << "YES" << endl;
+    else cout << "NO" << endl;
+}
+   
+int main()
+{
+    int t = 1,cs = 0;
+    //cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+ 
+    return 0;
+} 

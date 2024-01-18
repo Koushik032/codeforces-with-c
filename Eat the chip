@@ -1,0 +1,131 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+void solve(int cs)
+{
+    int n, m;
+    cin >> n >> m;
+
+    int x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+
+    if( x1 > x2 )
+    {
+        cout << "Draw" << endl;
+        return;
+    }
+
+    int x = x2 - x1;
+    //cout << x << endl;
+
+    if( x % 2 == 0 )
+    {
+        if( y1 < y2 )
+        {
+            int y = x / 2;
+            int z = x - y;
+            //cout << y << " " << z << endl;
+
+            int k = y1 - z;
+            y1 = max(1,k);
+            x1 += z;
+            y2 = max(1,y2-y);
+            x2 -= y;
+            //cout << x1 << " " << y1 << " " <<  x2 << " " << y2 << endl;
+        }
+        else if( y1 > y2 )
+        {
+            int y = x / 2;
+            int z = x - y;
+            //cout << y << " " << z << endl;
+
+            int k = y1 + z;
+            y1 = min(m,k);
+            x1 += z;
+
+            y2 = min(m,y2+y);
+            x2 -= y;
+            //cout << x1 << " " << y1 << " " << x2 << " " << y2 << endl;
+        }
+        else
+        {
+            cout << "Bob" << endl;
+            return;
+        }
+        if( x1 == x2 && y1 == y2 )cout << "Bob" << endl;
+        else cout << "Draw" << endl;
+    }
+    else
+    {
+        if( y1 < y2 )
+        {
+            int y = x / 2;
+            int z = x - y;
+            //cout << y << " " << z << endl;
+            int k = y1 + z;
+            y1 = min(m,k);
+            x1 += z;
+
+            y2 = min(m,y2+y);
+            x2 -= y;
+            //cout << x1 << " " << y1 << " " << x2 << " " << y2 << endl;
+        }
+        else if( y1 > y2 )
+        {
+            int y = x / 2;
+            int z = x - y;
+            //cout << y << " " << z << endl;
+
+            int k = y1 - z;
+            y1 = max(1,k);
+            x1 += z;
+
+            y2 = max(1,y2-y);
+            x2 -= y;
+            //cout << x1 << " " << y1 << " " << x2 << " " << y2 << endl;
+        }
+        else
+        {
+            cout << "Alice" << endl;
+            return;
+        }
+        if( x1 == x2 && y1 == y2 )cout << "Alice" << endl;
+        else cout << "Draw" << endl;
+    }
+}
+   
+int main()
+{
+    int t = 1,cs = 0;
+    cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+ 
+    return 0;
+} 

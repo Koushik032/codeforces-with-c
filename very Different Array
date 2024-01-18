@@ -1,0 +1,151 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+void solve(int cs)
+{
+    int n, m;
+    cin >> n >> m;
+
+    //cout << n << " " << m << endl;
+
+    vi v(n), v1(m);
+
+    for( auto &u : v)cin >> u;
+    for( auto &u : v1)cin >> u;
+
+    sort( all(v));
+    sort(all(v1));
+
+    // for( auto u : v)cout << u << " ";
+    //     cout << endl;
+    // for( auto u : v1)cout << u << " ";
+    //     cout << endl;
+
+    int i = 0, j = n - 1;
+    int l = 0, r = m - 1;
+    ll sum = 0;
+
+    while( i <= j )
+    {
+        int x = abs(v[i] - v1[l]);
+        int y = abs(v[i] - v1[r]);
+        int z = abs(v[j] - v1[l]);
+        int w = abs(v[j] - v1[r]);
+
+        if( x > y )
+        {
+            if( z > w )
+            {
+                if( x > z )
+                {
+                    sum += x;
+                    i++;
+                    l++;
+                    //cout << "x1 :" << x << endl;  
+                }
+                else
+                {
+                    sum += z;
+                    j--;
+                    l++;
+                    //cout << "z1 :" << z << endl;
+                }
+            }
+            else
+            {
+                if( x > w )
+                {
+                    sum += x;
+                    i++;
+                    l++;
+                    //cout << "x2 :" << x << endl;
+                }
+                else
+                {
+                    sum += w;
+                    j--;
+                    r--;
+                    //cout << "w1 :" << w << endl;
+                }
+            }
+        }
+        else
+        {
+            if( z > w )
+            {
+                if( y > z )
+                {
+                    sum += y;
+                    i++;
+                    r--;
+                    //cout << "y1 :" << y << endl;
+                }
+                else
+                {
+                    sum += z;
+                    j--;
+                    l++;
+                    //cout << "z2 :" << z << endl;
+                }
+            }
+            else
+            {
+                if( y > w )
+                {
+                    sum += y;
+                    i++;
+                    r--;
+                    //cout << "y2 :" << y << endl;
+                }
+                else
+                {
+                    sum += w;
+                    j--;
+                    r--;
+                    //cout << "w2 :" << w << endl;
+                }
+            }
+        }
+        //cout << sum << endl;
+    }
+
+    cout << sum << endl;
+
+    
+}
+   
+int main()
+{
+    int t = 1,cs = 0;
+    cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+ 
+    return 0;
+} 

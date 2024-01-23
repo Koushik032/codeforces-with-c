@@ -1,0 +1,175 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+
+void solve(int cs)
+{
+    string s;
+    cin >> s;
+
+    bool flag = false;
+    int x = 0, y = 0;
+    vector<int> idx;
+    for( int i = 0; i < s.size(); i++ )
+    {
+        if( s[i] == '.' && y == 0 )
+        {
+            if( x > 8 )
+            {
+                cout << "NO" << endl;
+                return;
+            }
+            else
+            {
+                y++;
+                x = 0;
+            }
+        }
+        else if( s[i] == '.' && y > 0 )
+        {
+            if( x > 11 )
+            {
+                cout << "NO" << endl;
+                return;
+            }
+            else
+            {
+                idx.PB(x);
+                y++;
+                x = 0;
+            }
+        }
+        else
+            x++;
+
+        //cout << x << endl;
+    }
+
+    if( y == 0 )
+    {
+        cout << "NO" << endl;
+        return;
+    }
+
+    if( x != 0 )idx.PB(x);
+    //cout << x << endl;
+
+    //for( auto u : idx )cout << u << endl;
+
+    if( x > 3 || x == 0 )
+    {
+        cout << "NO" << endl;
+        return;
+    }
+
+    string ans = "";
+    int cnt = 0,cnt1 = 0, dot = 0;
+    vector<string> v;
+    int j = 0;
+
+    for( int i = 0; i < s.size(); i++ )
+    {
+        if( s[i] == '.' && (cnt == 0 && cnt1 == 0 ))
+        {
+            cout << "NO" << endl;
+            return;
+        }
+        else if( s[i] == '.' && (cnt != 0 || cnt1 != 0 ))
+        {
+            flag = true;
+            dot++;
+            if( j == idx.size()-1 )
+            {
+                y = idx[j];
+            }
+            else if( idx[j] > 3 )
+            {
+                y = 3;
+                j++;
+            }
+            else if( idx[j] == 1 )
+            {
+                cout << "NO" << endl;
+                return;
+            }
+            else
+            {
+                y = idx[j] - 1;
+                //cout << y << endl;
+                j++;
+            }
+            if( dot == 2 )
+            {
+                cout << "NO" << endl;
+                return;
+            }
+            ans += s[i];
+        }
+        else if( !flag && cnt < 8 )
+        {
+            ans += s[i];
+            cnt++;
+            //cout << "a " << endl;
+            cnt1 = 0;
+        }
+        else if( flag && cnt1 < y )
+        {
+            cnt = 0;
+            ans+= s[i];
+            cnt1++;
+            dot = 0;
+        }
+        else if( flag && cnt1 == y )
+        {
+            cnt1 = 0;
+            flag = false;
+            v.PB(ans);
+            ans.clear();
+            ans += s[i];
+            cnt++;
+        }
+        //cout << ans << endl;
+
+        //for( auto u : v )cout << u << endl;
+    }
+    if( cnt1 != 0 )v.PB(ans);
+
+    cout << "YES" << endl;
+    for( auto u : v )cout << u << endl;
+
+}
+   
+int main()
+{
+    int t = 1,cs = 0;
+    //cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+ 
+    return 0;
+} 

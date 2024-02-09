@@ -1,0 +1,109 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+void solve(int cs)
+{
+    ll n, k, b, s;
+    cin >> n >> k >> b >> s;
+
+    ll x = (k * b);
+
+    if( x > s )
+    {
+        cout << -1 << endl;
+        return;
+    }
+    vl v(n);
+
+    v[0] = x;
+
+    ll sum = s - x;
+    //cout << sum << endl;
+
+    for( int i = 1; i < n; i++ )
+    {
+        if( sum >= k )
+        {
+            v[i] = k - 1;
+            sum -= (k-1);
+        }
+        else
+        {
+            v[i] = sum;
+            sum = 0;
+        }
+    }
+    sum = 0;
+
+    // for( auto u : v)cout << u << " ";
+    //     cout << endl;
+    for( auto u : v)
+        sum += u;
+    //cout << sum << endl;
+
+    if( sum < s )
+    {
+        ll a = (k-1) + ((k-1) - v[n-1]);
+       //cout << a << endl;
+
+        if( (s - sum) > a )
+        {
+            cout << -1 << endl;
+        }
+        else
+        {
+            ll b = s - sum;
+            if( b > k )
+            {
+                v[0] += (k-1);
+                b -= (k-1);
+                v[n-1] = b;
+            }
+            else
+            {
+                v[0] += b;
+            }
+
+            for( auto u : v )cout << u << " ";
+                cout << endl;
+        }
+    }
+    else
+    {
+        for( auto u : v )cout << u << " ";
+                cout << endl;
+    }
+}
+int main()
+{
+    int t = 1,cs = 0;
+    cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+    return 0;
+} 

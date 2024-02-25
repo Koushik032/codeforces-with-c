@@ -1,0 +1,109 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+const int N = 1e6;
+vector<pair<int, ll>> graph[N];
+ll distt[N];
+int parent[N];
+
+void Dijstra(int src, int target)
+{
+    priority_queue<pair<int,int>,vector<pair<int,int>>, greater<pair<int,int>>> pq;
+
+    distt[src] = 0;
+    parent[src] = src;
+    pq.push({0, src});
+
+    while( !pq.empty() )
+    {
+        auto x = pq.top();
+        pq.pop();
+        ll dist = x.first;
+        int node = x.second;
+        if( distt[node] < dist )continue;
+        for ( auto u : graph[node] )
+        {
+            int adjnode = u.first;
+            ll edgeWeight = u.second;
+
+            if( distt[node] + edgeWeight < distt[adjnode] )
+            {
+                distt[adjnode] = distt[node] + edgeWeight;
+                pq.push({distt[adjnode], adjnode});
+                parent[adjnode] = node;
+            }
+        }
+    }
+}
+
+void solve(int cs)
+{
+    int n, m;
+    cin >> n >> m;
+
+    for( int i = 0; i < m; i++ )
+    {
+        int edge1, edge2;
+        int wt;
+        cin >> edge1 >> edge2 >> wt;
+
+        graph[edge1].PB({edge2, wt});
+        graph[edge2].PB({edge1, wt});
+    }
+
+    for( int i = 1; i < N; i++ ) distt[i] = LLONG_MAX;
+    for( int i = 0; i < N; i++ ) parent[i] = i;
+
+    Dijstra(1, n);
+    if( distt[n] == LLONG_MAX)
+    {
+        cout << -1 << endl;
+    }
+    else
+    {
+        vector<int> path;
+        while( parent[n] != n )
+        {
+            path.PB(n);
+            n = parent[n];
+        }
+        path.push_back(1);
+        reverse(path.begin(), path.end());
+
+        for( auto u : path )cout << u << " ";
+            cout << endl;
+    }
+}
+int main()
+{
+    int t = 1,cs = 0;
+    //cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+    return 0;
+}

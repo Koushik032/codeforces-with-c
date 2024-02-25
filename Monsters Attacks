@@ -1,0 +1,76 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+void solve(int cs)
+{
+    ll n, k;
+    cin >> n >> k;
+
+    vl v1(n), v2(n);
+
+    vector<pair<ll,ll>> v;
+
+    for( auto &u : v1)cin >> u;
+
+    for( auto &u : v2)cin >> u;
+    map<ll,ll> mp;
+
+    for( int i = 0; i < n; i++ )
+    {
+        v.PB({abs(v2[i]), v1[i]});
+    }
+
+    for( auto u : v )
+    {
+        mp[u.F] += u.S; 
+    }
+    //for( auto u : mp)cout << u.F << " " << u.S << endl;
+
+    ll sum = 0, i = 0;
+
+    for( int i = 1; i <= n; i++ )
+    {
+        sum += k;
+        sum -= mp[i];
+
+        if( sum < 0 )
+        {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    cout << "YES" << endl;
+}
+int main()
+{
+    int t = 1,cs = 0;
+    cin >> t;
+    while(t--)
+    {
+        solve(++cs);
+    }
+    return 0;
+}

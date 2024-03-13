@@ -1,0 +1,92 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+void solve(int cs)
+{
+    int n, a, b;
+    cin >> n >> a >> b;
+
+    string s;
+    cin >> s;
+
+    if( a > b )
+    {
+        for( int i = 0; i < n; i++ )
+        {
+            if( s[i] == '.' && a != 0 && s[i-1] != 'A' )
+            {
+                s[i] = 'A';
+                a--;
+            }
+        }
+        for( int i = 0; i < n; i++ )
+        {
+            if( s[i] == '.' && b != 0 )
+            {
+                s[i] = 'B';
+                b--;
+            }
+        }
+        //cout << s << endl;
+    }
+    else
+    {
+        for( int i = 0; i < n; i++ )
+        {
+            if( s[i] == '.' && b != 0 && s[i-1] != 'B' )
+            {
+                s[i] = 'B';
+                b--;
+            }
+        }
+        for( int i = 0; i < n; i++ )
+        {
+            if( s[i] == '.' && a != 0 )
+            {
+                s[i] = 'A';
+                a--;
+            }
+        }
+        //cout << s << endl;
+    }
+    int ans = 0;
+    for( int i = 0; i < n; i++ )
+    {
+        if( s[i] == 'A' || s[i] == 'B' )ans++;
+    }
+    cout << ans << endl;
+}
+int main()
+{
+    int t = 1,cs = 0;
+    //cin >> t;
+    
+    while(t--)
+    {
+        solve(++cs);
+    }
+    return 0;
+} 

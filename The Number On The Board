@@ -1,0 +1,74 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pii;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+void solve(int cs)
+{
+    int n;
+    cin >> n;
+
+    string s;
+    cin >> s;
+
+    sort(all(s));
+
+    //cout << s << endl;
+
+    ll x = 0, ans = 0;
+
+    for( int i = 0; i < s.size(); i++ )
+    {
+        int a = s[i] - '0';
+        x += a;
+        //cout << x << endl;
+    }
+    //cout << n - x << endl;
+    if( x >= n )cout << 0 << endl;
+    else
+    {
+        for( int i = 0; i < s.size(); i++ )
+        {
+            ll a = s[i] - '0';
+            //cout << a << endl;
+            x += 9 - a;
+            //x += 9;
+            ans++;
+            if( x >= n )break;
+        }
+        cout << ans << endl;
+    }
+
+}
+int main()
+{
+    int t = 1,cs = 0;
+    //cin >> t;
+    
+    while(t--)
+    {
+        solve(++cs);
+    }
+    return 0;
+} 

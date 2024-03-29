@@ -1,0 +1,99 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<long long> vi;
+typedef vector<ll> vl;
+typedef pair<long long,long long> pii;
+
+#define endl '\n'
+#define PB push_back
+#define eb emplace_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+void solve(int cs)
+{
+    int n, k;
+    cin >> n >> k;
+
+    string s;
+    cin >> s;
+
+    set< char > st;
+
+    for( int i = 0; i <n; i++ )
+    {
+        st.insert(s[i]);
+    }
+
+    string ans = "";
+    bool f = false;
+    char a;
+    int pos = 0;
+
+    if( k > n)
+    {
+        ans += s;
+        for( int i = n; i < k; i++ )
+        {
+            ans += *st.begin();
+        }
+        cout << ans << endl;
+        return;
+    }
+
+    //cout << s[k-1] << endl;
+    for( int i = k-1; i >= 0; i-- )
+    {
+        for( auto u : st )
+        {
+            if( u > s[i] )
+            {
+                pos = i;
+                a = u;
+                f = true;
+                break;
+            }
+        }
+
+        if( f )break;
+    }
+
+    for( int i = 0; i < pos; i++ )
+    {
+        ans += s[i];
+    }
+    ans += a;
+
+    for( int i = pos+1; i < k; i++ )
+    {
+        ans += *st.begin();
+    }
+    cout << ans << endl;
+}
+int main()
+{
+    //optimize();
+
+    int t = 1,cs = 0;
+    //cin >> t;
+
+    while(t--)
+    {
+        solve(++cs);
+    }
+    return 0;
+}

@@ -1,0 +1,99 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<long long> vi;
+typedef vector<ll> vl;
+typedef pair<long long,long long> pii;
+
+#define endl '\n'
+#define PB push_back
+#define eb emplace_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+void solve(int cs)
+{
+    int n, m, a, b;
+    cin >> n >> m >> a >> b;
+
+    vector<pair<int,int>> pa;
+
+    for( int i = 0; i < a; i++ )
+    {
+        int x, y;
+        cin >> x >> y;
+
+        pa.PB({x,y});
+    }
+    while( b-- )
+    {
+        bool f = true;
+        int x, y;
+        cin >> x >> y;
+
+        for( auto u : pa )
+        {
+            if( u.F == x && u.S == y )
+            {
+                cout << "Waste" << endl;
+                f = false;
+                break;
+            }
+        }
+
+        int was = 0;
+
+        for( auto u : pa )
+        {
+            if( u.F < x )was++;
+            else if( u.F == x && u.S <= y )was++;
+        }
+
+        if( !f )continue;
+        
+        int cell = m * (x-1);
+        cell += y;
+
+        //cout << cell << " " << was << endl;
+
+        if( (cell-was) % 3 == 0 )
+        {
+            cout << "Grapes" << endl;
+        }
+        else if( (cell-was) % 3 == 2 )
+        {
+            cout << "Kiwis" << endl;
+        }
+        else
+        {
+            cout << "Carrots" << endl;
+        }
+    }
+
+}
+int main()
+{
+    //optimize();
+
+    int t = 1,cs = 0;
+    //cin >> t;
+
+    while(t--)
+    {
+        solve(++cs);
+    }
+    return 0;
+}

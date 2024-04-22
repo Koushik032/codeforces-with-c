@@ -1,0 +1,129 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<long long> vi;
+typedef vector<ll> vl;
+typedef pair<long long,long long> pii;
+
+#define endl '\n'
+#define PB push_back
+#define eb emplace_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+
+#define MOD 100003
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll gcd ( ll a, ll b ){    return __gcd ( a, b );}
+ll lcm ( ll a, ll b ){    return a * ( b / gcd ( a, b ) );}
+
+void solve(ll cs)
+{
+    int n;
+    cin >> n;
+
+    vi v(n);
+
+    vi minimal(n), maximal;
+
+    for( auto &u : v)
+    {
+        cin >> u;
+    }
+    map<int,int> mp;
+    int mx = 0;
+    for( int i = 0; i < n; i++ )
+    {
+        if( v[i] > mx )
+        {
+            minimal[i] = v[i];
+            mx = v[i];
+        }
+    }
+
+    maximal = minimal;
+
+    for( auto u : maximal )
+    {
+        mp[u]++;
+    }
+
+    vi arr;
+
+    for( int i = 1; i <= n; i++ )
+    {
+        if( mp[i] == 1 )continue;
+        arr.PB(i);
+    }
+
+
+    int x = 1;
+    int j = 0;
+
+    for( int i = 0;i < n; i++ )
+    {
+        if( minimal[i] == 0 )
+        {
+            minimal[i] = arr[j++];
+        }
+    }
+
+
+    for( int i = 0;i < n; i++ )
+    {
+        if( maximal[i] == 0 )
+        {
+            int l = 0, r = arr.size()-1;
+            int ans = 0, pos = 0;
+            while( l <= r )
+            {
+                int mid = (l + r)/2;
+                if( arr[mid] > x )
+                {
+                    r = mid - 1;
+                }
+                else
+                {
+                    l = mid + 1;
+                    if( ans < arr[mid] )
+                    {
+                        ans = arr[mid];
+                        pos = mid;
+                    }
+                }
+            }
+            maximal[i] = ans;
+            //cout << ans << " " << pos << endl;
+            arr.erase(arr.begin()+pos);
+        }
+        else
+        {
+            x = maximal[i];
+        }
+    }
+
+
+    for( auto u : minimal)cout << u << " ";
+        cout << endl;
+    for( auto u : maximal)cout << u << " ";
+        cout << endl;
+}
+
+int main() {
+
+    int t=1, cs=1;
+    cin>>t;
+
+    while(t--)
+    {
+        solve(cs++);
+    }
+    return 0;
+}
